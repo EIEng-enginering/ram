@@ -1,0 +1,12 @@
+== Report agreement (examples) ==
+PASS examples/Offshore_Production/Reports/ram_fa656e9ed3.json (5 metrics, status/run/method labels)
+PASS examples/Onshore_Utility_Reference/Reports/ram_8e480c6eac.json (9 metrics, status/run/method labels)
+== Negative control: tampered JSON copy (efficiency mean and status altered) must FAIL ==
+FAIL /tmp/neg/ram_8e480c6eac.json (9 metrics, status/run/method labels)
+    status 'FINAL' missing from docx
+    status 'FINAL' missing from pdf
+    XLSX status differs
+    XLSX efficiency 0.99735686 != 0.98
+    docx lacks efficiency mean 0.98
+    pdf lacks efficiency mean 0.98
+exit code 1

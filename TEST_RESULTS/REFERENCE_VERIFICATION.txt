@@ -1,0 +1,11 @@
+Reference verification · 2026-11-20 11:00 AWST
+Tolerance: |mean - expected| < 4 SE + 0.0015 start-up bias allowance (system starts all-up).
+standby s=0.0 idle=0.0 crews=1                   expected 0.967742  simulated 0.968105 ± 0.000852 (95%)  n=400  PASS  [3.3s]
+standby s=0.1 idle=0.0 crews=1                   expected 0.947368  simulated 0.948131 ± 0.001076 (95%)  n=400  PASS | negative control 0.967742 rejected  [3.7s]
+standby s=0.1 idle=0.25 crews=1                  expected 0.941423  simulated 0.942052 ± 0.001147 (95%)  n=400  PASS | negative control 0.961538 rejected  [5.3s]
+standby s=0.1 idle=0.25 crews=2                  expected 0.969828  simulated 0.969865 ± 0.000625 (95%)  n=400  PASS | negative control 0.980392 rejected  [5.3s]
+standby s=0.3 idle=0.5 crews=1                   expected 0.883495  simulated 0.884015 ± 0.001642 (95%)  n=400  PASS | negative control 0.955882 rejected  [6.2s]
+series 0.9 x 0.8                                 expected 0.720000  simulated 0.720237 ± 0.001235 (95%)  n=400  PASS  [5.0s]
+parallel 0.9 | 0.8                               expected 0.980000  simulated 0.979822 ± 0.000336 (95%)  n=400  PASS  [4.8s]
+2oo3 voting 0.9                                  expected 0.972000  simulated 0.972191 ± 0.000390 (95%)  n=400  PASS | negative control 0.999000 rejected  [5.4s]
+shared utility under redundant trains            expected 0.900000  simulated 0.899508 ± 0.000924 (95%)  n=400  PASS | negative control 0.990000 rejected  [1.9s]

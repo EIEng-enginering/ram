@@ -1,0 +1,3 @@
+Offshore demo (1000 reps, seed 42), 0.3 code, two separate processes: Run_Comparisons identical: True
+0.2 original vs 0.3 code, numerical comparison values identical (0.3 adds kind/significant/note labels only): True
+Base mean efficiency: 0.9926424579038817

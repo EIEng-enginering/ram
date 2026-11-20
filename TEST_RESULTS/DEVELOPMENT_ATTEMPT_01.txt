@@ -1,0 +1,25 @@
+test_exact_cover_and_draw_limit (test_engines.AnalysisTests.test_exact_cover_and_draw_limit) ... ok
+test_known_answers (test_engines.AnalysisTests.test_known_answers) ... ok
+test_offshore_replay_and_comparison (test_engines.AnalysisTests.test_offshore_replay_and_comparison) ... FAIL
+test_partial_capacity (test_engines.AnalysisTests.test_partial_capacity) ... ok
+test_repeatability_and_reference (test_engines.AnalysisTests.test_repeatability_and_reference) ... ok
+test_spare_and_crew_keep_busy_fraction_bounded (test_engines.AnalysisTests.test_spare_and_crew_keep_busy_fraction_bounded) ... ok
+test_unsupported_and_missing_inputs (test_engines.AnalysisTests.test_unsupported_and_missing_inputs) ... ok
+test_create_and_reopen_with_literal_path (test_storage.CaseStorageTests.test_create_and_reopen_with_literal_path) ... ok
+test_foreign_database_is_preserved (test_storage.CaseStorageTests.test_foreign_database_is_preserved) ... ok
+test_future_schema_rejected (test_storage.CaseStorageTests.test_future_schema_rejected) ... ok
+test_migration_rolls_back_as_a_unit (test_storage.CaseStorageTests.test_migration_rolls_back_as_a_unit) ... ok
+test_zero_distinct_from_missing_and_source_required (test_storage.CaseStorageTests.test_zero_distinct_from_missing_and_source_required) ... ok
+
+======================================================================
+FAIL: test_offshore_replay_and_comparison (test_engines.AnalysisTests.test_offshore_replay_and_comparison)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/ef2a8bdc4173/rammodel/tests/test_engines.py", line 67, in test_offshore_replay_and_comparison
+    self.assertAlmostEqual(first["efficiency"], 0.9656552056975776, places=10)
+AssertionError: 0.9800083445342942 != 0.9656552056975776 within 10 places (0.014353138836716628 difference)
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.201s
+
+FAILED (failures=1)

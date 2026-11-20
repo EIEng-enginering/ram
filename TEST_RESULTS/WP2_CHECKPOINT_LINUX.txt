@@ -1,0 +1,53 @@
+test_exact_cover_and_draw_limit (test_engines.AnalysisTests.test_exact_cover_and_draw_limit) ... ok
+test_known_answers (test_engines.AnalysisTests.test_known_answers) ... ok
+test_offshore_replay_and_comparison (test_engines.AnalysisTests.test_offshore_replay_and_comparison) ... ok
+test_partial_capacity (test_engines.AnalysisTests.test_partial_capacity) ... ok
+test_repeatability_and_reference (test_engines.AnalysisTests.test_repeatability_and_reference) ... ok
+test_spare_and_crew_keep_busy_fraction_bounded (test_engines.AnalysisTests.test_spare_and_crew_keep_busy_fraction_bounded) ... ok
+test_standby_simulation_against_markov (test_engines.AnalysisTests.test_standby_simulation_against_markov) ... ok
+test_unsupported_and_missing_inputs (test_engines.AnalysisTests.test_unsupported_and_missing_inputs) ... ok
+test_utility_service_dependency_vote (test_engines.AnalysisTests.test_utility_service_dependency_vote) ... ok
+test_zero_observed_failure_has_upper_uncertainty (test_engines.AnalysisTests.test_zero_observed_failure_has_upper_uncertainty) ... ok
+test_create_and_reopen_with_literal_path (test_storage.CaseStorageTests.test_create_and_reopen_with_literal_path) ... ok
+test_foreign_database_is_preserved (test_storage.CaseStorageTests.test_foreign_database_is_preserved) ... ok
+test_future_schema_rejected (test_storage.CaseStorageTests.test_future_schema_rejected) ... ok
+test_migration_rolls_back_as_a_unit (test_storage.CaseStorageTests.test_migration_rolls_back_as_a_unit) ... ok
+test_zero_distinct_from_missing_and_source_required (test_storage.CaseStorageTests.test_zero_distinct_from_missing_and_source_required) ... ok
+test_offscreen_windows_and_linked_views (test_workflow.Desktop.test_offscreen_windows_and_linked_views) ... This plugin does not support propagateSizeHints()
+ok
+test_ai_output_boundaries (test_workflow.Workflows.test_ai_output_boundaries) ... ok
+test_csv_failed_import_rolls_back (test_workflow.Workflows.test_csv_failed_import_rolls_back) ... ok
+test_excel_csv_preview_roundtrip_and_binding (test_workflow.Workflows.test_excel_csv_preview_roundtrip_and_binding) ... ok
+test_report_review_stale_and_formats (test_workflow.Workflows.test_report_review_stale_and_formats) ... ok
+test_migrate_alpha_case_copy_without_losing_run (test_wp1_data.CaseIntegrity.test_migrate_alpha_case_copy_without_losing_run) ... ok
+test_rate_estimate_from_accepted_observations_only (test_wp1_data.CaseIntegrity.test_rate_estimate_from_accepted_observations_only) ... ok
+test_revision_history_and_reopen (test_wp1_data.CaseIntegrity.test_revision_history_and_reopen) ... ok
+test_apply_preserves_original_and_canonical_values (test_wp1_data.MappedImport.test_apply_preserves_original_and_canonical_values) ... ok
+test_bind_skips_rejected_and_carries_basis (test_wp1_data.MappedImport.test_bind_skips_rejected_and_carries_basis) ... ok
+test_exchange_round_trip_reproduces_inputs (test_wp1_data.MappedImport.test_exchange_round_trip_reproduces_inputs) ... ok
+test_failed_batch_rolls_back_everything (test_wp1_data.MappedImport.test_failed_batch_rolls_back_everything) ... ok
+test_legacy_alpha_exchange_files_import (test_wp1_data.MappedImport.test_legacy_alpha_exchange_files_import) ... ok
+test_preview_row_errors_mixed_units_blank_and_zero (test_wp1_data.MappedImport.test_preview_row_errors_mixed_units_blank_and_zero) ... ok
+test_blank_is_not_zero_and_original_kept (test_wp1_data.Units.test_blank_is_not_zero_and_original_kept) ... ok
+test_conversions_by_definition (test_wp1_data.Units.test_conversions_by_definition) ... ok
+test_cross_dimension_and_ambiguous_rejected (test_wp1_data.Units.test_cross_dimension_and_ambiguous_rejected) ... ok
+test_exposure_bases_never_mixed_implicitly (test_wp1_data.Units.test_exposure_bases_never_mixed_implicitly) ... ok
+test_edit_select_undo_save_reopen_and_baseline_guard (test_wp2_desktop.DesktopEditing.test_edit_select_undo_save_reopen_and_baseline_guard) ... This plugin does not support propagateSizeHints()
+ok
+test_approved_baseline_requires_confirmation (test_wp2_physical.Editing.test_approved_baseline_requires_confirmation) ... ok
+test_edit_undo_redo_reload_and_audit (test_wp2_physical.Editing.test_edit_undo_redo_reload_and_audit) ... ok
+test_exact_six_hour_cover_retained (test_wp2_physical.Inventory.test_exact_six_hour_cover_retained) ... ok
+test_initial_inventory_at_both_limits (test_wp2_physical.Inventory.test_initial_inventory_at_both_limits) ... ok
+test_two_buffer_conservation_and_hand_trace (test_wp2_physical.Inventory.test_two_buffer_conservation_and_hand_trace) ... ok
+test_declared_recycle_is_solved_without_spurious_circulation (test_wp2_physical.Routing.test_declared_recycle_is_solved_without_spurious_circulation) ... ok
+test_reroute_by_priority_after_branch_outage (test_wp2_physical.Routing.test_reroute_by_priority_after_branch_outage) ... ok
+test_unsupported_topologies_reported (test_wp2_physical.Routing.test_unsupported_topologies_reported) ... ok
+test_yield_loss_balance (test_wp2_physical.Routing.test_yield_loss_balance) ... ok
+test_analytic_nested_tree (test_wp2_physical.StructureHandChecks.test_analytic_nested_tree) ... ok
+test_flow_series_parallel_kofn_nested_match_algebra (test_wp2_physical.StructureHandChecks.test_flow_series_parallel_kofn_nested_match_algebra) ... ok
+test_shared_utility_removes_false_redundancy (test_wp2_physical.StructureHandChecks.test_shared_utility_removes_false_redundancy) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 18.388s
+
+OK

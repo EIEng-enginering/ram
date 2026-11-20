@@ -1,0 +1,60 @@
+{
+  "larger_product_tank": {
+    "n": 500,
+    "seed": 42,
+    "base_hash": "c0d26fac828cd5212c282f5d68a7b44247492d3684c798160fa15d6df41dcae2",
+    "alternative_hash": "dc1182605bc5cff5cbd581c24ab092898033abb7007bcd9fb5a70c07cd7eaeba",
+    "base": {
+      "mean": 0.9973568564947505,
+      "p10": 0.9929164871792001,
+      "p50": 0.9988143089698969,
+      "p90": 1.0,
+      "ci95": [
+        0.9970365219269822,
+        0.9976771910625187
+      ],
+      "halfwidth": 0.00032033456776826445,
+      "kind": "sampling"
+    },
+    "alternative": {
+      "mean": 0.9983182973015432,
+      "p10": 0.994266968278628,
+      "p50": 0.9998761229181048,
+      "p90": 1.0000000000000002,
+      "ci95": [
+        0.998050448605767,
+        0.9985861459973194
+      ],
+      "halfwidth": 0.00026784869577623475,
+      "kind": "sampling"
+    },
+    "difference": {
+      "mean": 0.0009614408067928204,
+      "p10": 0.0,
+      "p50": 0.000961446014805245,
+      "p90": 0.002196716345538985,
+      "ci95": [
+        0.0008802136344703352,
+        0.0010426679791153055
+      ],
+      "halfwidth": 8.122717232248517e-05,
+      "kind": "paired_delta",
+      "significant": true
+    },
+    "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference)."
+  },
+  "utility_reference": {
+    "case": "Independent utility reference case",
+    "expected": 0.949905,
+    "expected_derivation": "0.99 * (0.95^2 + 2*0.95*0.05*0.6) = 0.949905",
+    "ignoring_shared_utility": 0.9595,
+    "simulated_mean": 0.9496570608530766,
+    "standard_error": 0.0003556096621399289,
+    "tolerance": 0.0029224386485597158,
+    "tolerance_rule": "4 SE + 0.0015 start-up bias",
+    "seed": 11,
+    "replications": 200,
+    "hours": 20000,
+    "pass": true
+  }
+}

@@ -1,0 +1,1 @@
+examples/Offshore_Production/Synthetic_Offshore.ramcase | n=1000 | mean efficiency=99.264246% | converged=True

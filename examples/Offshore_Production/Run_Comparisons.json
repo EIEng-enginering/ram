@@ -1,0 +1,307 @@
+{
+  "larger_storage": {
+    "n": 1000,
+    "seed": 42,
+    "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+    "alternative_hash": "9e9de692059a00498298d23bb7bfbe3bd9375b3307570035b996d7285f92e7f8",
+    "base": {
+      "mean": 0.9926424579038817,
+      "p10": 0.9858676908128123,
+      "p50": 0.9935525985211139,
+      "p90": 0.9985188466505754,
+      "ci95": [
+        0.9923394409975506,
+        0.9929454748102129
+      ],
+      "halfwidth": 0.00030301690633112,
+      "kind": "sampling"
+    },
+    "alternative": {
+      "mean": 0.9980338244084589,
+      "p10": 0.9938480426482117,
+      "p50": 0.9996874999999998,
+      "p90": 1.0000000000000002,
+      "ci95": [
+        0.9978353750096494,
+        0.9982322738072684
+      ],
+      "halfwidth": 0.0001984493988095359,
+      "kind": "sampling"
+    },
+    "difference": {
+      "mean": 0.005391366504577249,
+      "p10": 0.0014375000000002025,
+      "p50": 0.005375000000000019,
+      "p90": 0.008773764416697876,
+      "ci95": [
+        0.005226335339906398,
+        0.0055563976692481
+      ],
+      "halfwidth": 0.00016503116467085098,
+      "kind": "paired_delta",
+      "significant": true
+    },
+    "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference)."
+  },
+  "single_full_capacity_train": {
+    "n": 1000,
+    "seed": 42,
+    "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+    "alternative_hash": "a80cda8fbc73dc77b04b90111b3b1a07cb710e70a25a5835eae1489a7b8a1f71",
+    "base": {
+      "mean": 0.9926424579038817,
+      "p10": 0.9858676908128123,
+      "p50": 0.9935525985211139,
+      "p90": 0.9985188466505754,
+      "ci95": [
+        0.9923394409975506,
+        0.9929454748102129
+      ],
+      "halfwidth": 0.00030301690633112,
+      "kind": "sampling"
+    },
+    "alternative": {
+      "mean": 0.9872400984328539,
+      "p10": 0.9745250256988868,
+      "p50": 0.9875,
+      "p90": 1.0,
+      "ci95": [
+        0.9866594501234056,
+        0.9878207467423021
+      ],
+      "halfwidth": 0.0005806483094482487,
+      "kind": "sampling"
+    },
+    "difference": {
+      "mean": -0.005402359471027757,
+      "p10": -0.014437499999999881,
+      "p50": -0.004812499999999997,
+      "p90": 0.002874999999999961,
+      "ci95": [
+        -0.0058269444586521255,
+        -0.004977774483403389
+      ],
+      "halfwidth": 0.0004245849876243684,
+      "kind": "paired_delta",
+      "significant": true
+    },
+    "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference)."
+  },
+  "three_half_capacity_trains": {
+    "n": 1000,
+    "seed": 42,
+    "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+    "alternative_hash": "80fb13a32ac25b40595a56e2a671bd8bcfc43a47c1fc82e8e274b5cebcdb424c",
+    "base": {
+      "mean": 0.9926424579038817,
+      "p10": 0.9858676908128123,
+      "p50": 0.9935525985211139,
+      "p90": 0.9985188466505754,
+      "ci95": [
+        0.9923394409975506,
+        0.9929454748102129
+      ],
+      "halfwidth": 0.00030301690633112,
+      "kind": "sampling"
+    },
+    "alternative": {
+      "mean": 0.9994062600356568,
+      "p10": 0.9985712635503312,
+      "p50": 1.0,
+      "p90": 1.0000000000000002,
+      "ci95": [
+        0.9992800756605053,
+        0.9995324444108084
+      ],
+      "halfwidth": 0.0001261843751515299,
+      "kind": "sampling"
+    },
+    "difference": {
+      "mean": 0.006763802131775266,
+      "p10": 0.0014375000000002025,
+      "p50": 0.005948987296533148,
+      "p90": 0.012755532705277031,
+      "ci95": [
+        0.006500457328899654,
+        0.007027146934650878
+      ],
+      "halfwidth": 0.00026334480287561196,
+      "kind": "paired_delta",
+      "significant": true
+    },
+    "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference)."
+  },
+  "sensitivity": [
+    {
+      "input": "storage capacity",
+      "low": {
+        "n": 1000,
+        "seed": 42,
+        "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+        "alternative_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+        "base": {
+          "mean": 0.9926424579038817,
+          "p10": 0.9858676908128123,
+          "p50": 0.9935525985211139,
+          "p90": 0.9985188466505754,
+          "ci95": [
+            0.9923394409975506,
+            0.9929454748102129
+          ],
+          "halfwidth": 0.00030301690633112,
+          "kind": "sampling"
+        },
+        "alternative": {
+          "mean": 0.9926424579038817,
+          "p10": 0.9858676908128123,
+          "p50": 0.9935525985211139,
+          "p90": 0.9985188466505754,
+          "ci95": [
+            0.9923394409975506,
+            0.9929454748102129
+          ],
+          "halfwidth": 0.00030301690633112,
+          "kind": "sampling"
+        },
+        "difference": {
+          "mean": 0.0,
+          "p10": 0.0,
+          "p50": 0.0,
+          "p90": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "halfwidth": 0.0,
+          "kind": "paired_delta",
+          "significant": false
+        },
+        "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference)."
+      },
+      "high": {
+        "n": 1000,
+        "seed": 42,
+        "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+        "alternative_hash": "9e9de692059a00498298d23bb7bfbe3bd9375b3307570035b996d7285f92e7f8",
+        "base": {
+          "mean": 0.9926424579038817,
+          "p10": 0.9858676908128123,
+          "p50": 0.9935525985211139,
+          "p90": 0.9985188466505754,
+          "ci95": [
+            0.9923394409975506,
+            0.9929454748102129
+          ],
+          "halfwidth": 0.00030301690633112,
+          "kind": "sampling"
+        },
+        "alternative": {
+          "mean": 0.9980338244084589,
+          "p10": 0.9938480426482117,
+          "p50": 0.9996874999999998,
+          "p90": 1.0000000000000002,
+          "ci95": [
+            0.9978353750096494,
+            0.9982322738072684
+          ],
+          "halfwidth": 0.0001984493988095359,
+          "kind": "sampling"
+        },
+        "difference": {
+          "mean": 0.005391366504577249,
+          "p10": 0.0014375000000002025,
+          "p50": 0.005375000000000019,
+          "p90": 0.008773764416697876,
+          "ci95": [
+            0.005226335339906398,
+            0.0055563976692481
+          ],
+          "halfwidth": 0.00016503116467085098,
+          "kind": "paired_delta",
+          "significant": true
+        },
+        "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference)."
+      }
+    }
+  ],
+  "exact_buffer_cover": {
+    "efficiency": 1.0,
+    "delivered": 1200.0,
+    "shortfall": 0.0,
+    "crew_utilisation": null,
+    "asset_availability": {
+      "P": 0.5
+    },
+    "mode_downtime": {},
+    "failures": {},
+    "loss_groups": {},
+    "buffer_end": 0.0,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 2.0,
+        "delivery": 100.0,
+        "target": 100.0,
+        "buffer_start": 600.0,
+        "buffer_end": 600.0,
+        "edge_flow": {
+          "in": 100.0,
+          "out": 100.0
+        },
+        "loss": 0.0,
+        "causes": []
+      },
+      {
+        "start": 2.0,
+        "end": 8.0,
+        "delivery": 100.0,
+        "target": 100.0,
+        "buffer_start": 600.0,
+        "buffer_end": 0.0,
+        "edge_flow": {
+          "in": 0.0,
+          "out": 100.0
+        },
+        "loss": 0.0,
+        "causes": [
+          "P/planned"
+        ]
+      },
+      {
+        "start": 8.0,
+        "end": 12.0,
+        "delivery": 100.0,
+        "target": 100.0,
+        "buffer_start": 0.0,
+        "buffer_end": 0.0,
+        "edge_flow": {
+          "in": 100.0,
+          "out": 100.0
+        },
+        "loss": 0.0,
+        "causes": []
+      }
+    ],
+    "events": [
+      {
+        "hour": 2.0,
+        "event": "maintenance_start",
+        "item": "P"
+      },
+      {
+        "hour": 8.0,
+        "event": "maintenance_end",
+        "item": "P"
+      }
+    ]
+  },
+  "analytics": {
+    "single": 0.9090909090909091,
+    "2oo3": 0.9720000000000001,
+    "cold_standby": 0.990990990990991,
+    "hidden": [
+      0.0005,
+      0.0004998333749915984
+    ]
+  }
+}

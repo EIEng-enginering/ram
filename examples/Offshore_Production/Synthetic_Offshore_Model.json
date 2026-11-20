@@ -1,0 +1,274 @@
+{
+  "name": "Synthetic offshore production module",
+  "example": true,
+  "basis": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+  "source": "wells",
+  "sink": "sales",
+  "hours": 2400,
+  "target": 100,
+  "feed": 110,
+  "volume_unit": "m3",
+  "assets": [
+    {
+      "id": "MANIFOLD",
+      "modes": [],
+      "requires": [],
+      "explicit_no_failures": true
+    },
+    {
+      "id": "PWR-A",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 2100,
+          "loss": 1.0,
+          "logistics": 2.0,
+          "mobilisation": 3.0,
+          "repair": 12
+        }
+      ],
+      "requires": []
+    },
+    {
+      "id": "PWR-B",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 2100,
+          "loss": 1.0,
+          "logistics": 2.0,
+          "mobilisation": 3.0,
+          "repair": 12
+        }
+      ],
+      "requires": []
+    },
+    {
+      "id": "SEP-A",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 1250,
+          "loss": 1.0,
+          "logistics": 2.0,
+          "mobilisation": 3.0,
+          "repair": 16
+        }
+      ],
+      "requires": [
+        "POWER-2OO3"
+      ]
+    },
+    {
+      "id": "SEP-B",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 1250,
+          "loss": 1.0,
+          "logistics": 2.0,
+          "mobilisation": 3.0,
+          "repair": 16
+        }
+      ],
+      "requires": [
+        "POWER-2OO3"
+      ]
+    },
+    {
+      "id": "COMP",
+      "modes": [],
+      "requires": [],
+      "standby_pair": {
+        "active_mtbf": 1600,
+        "idle_mtbf": null,
+        "repair_mean": 19,
+        "switch_failure": 0.02
+      }
+    },
+    {
+      "id": "EXP-A",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 1900,
+          "loss": 1.0,
+          "logistics": 2.0,
+          "mobilisation": 3.0,
+          "repair": 14,
+          "spare": "export"
+        }
+      ],
+      "requires": [
+        "POWER-2OO3"
+      ]
+    },
+    {
+      "id": "EXP-B",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 1900,
+          "loss": 1.0,
+          "logistics": 2.0,
+          "mobilisation": 3.0,
+          "repair": 14
+        }
+      ],
+      "requires": [
+        "POWER-2OO3"
+      ]
+    },
+    {
+      "id": "PWR-C",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 2100,
+          "loss": 1,
+          "logistics": 2,
+          "mobilisation": 3,
+          "repair": 12
+        }
+      ]
+    },
+    {
+      "id": "POWER-2OO3",
+      "modes": [],
+      "explicit_no_failures": true,
+      "requires": [
+        "PWR-A",
+        "PWR-B",
+        "PWR-C"
+      ],
+      "requires_k": 2
+    }
+  ],
+  "edges": [
+    {
+      "id": "feed",
+      "from": "wells",
+      "to": "manifold",
+      "capacity": 110,
+      "assets": [
+        "MANIFOLD"
+      ]
+    },
+    {
+      "id": "train-A",
+      "from": "manifold",
+      "to": "tank",
+      "capacity": 55,
+      "assets": [
+        "SEP-A",
+        "COMP"
+      ]
+    },
+    {
+      "id": "train-B",
+      "from": "manifold",
+      "to": "tank",
+      "capacity": 55,
+      "assets": [
+        "SEP-B",
+        "COMP"
+      ]
+    },
+    {
+      "id": "export-A",
+      "from": "tank",
+      "to": "sales",
+      "capacity": 100,
+      "assets": [
+        "EXP-A"
+      ]
+    },
+    {
+      "id": "export-B",
+      "from": "tank",
+      "to": "sales",
+      "capacity": 100,
+      "assets": [
+        "EXP-B"
+      ]
+    }
+  ],
+  "crews": 1,
+  "spares": {
+    "export": {
+      "initial": 1,
+      "lead": 96
+    }
+  },
+  "buffer": {
+    "node": "tank",
+    "capacity": 600,
+    "initial": 600,
+    "fill": 10,
+    "draw": 100
+  },
+  "closed_access": [
+    [
+      820,
+      844
+    ],
+    [
+      1080,
+      1100
+    ]
+  ],
+  "maintenance": [
+    {
+      "asset": "COMP",
+      "start": 480,
+      "end": 486
+    }
+  ],
+  "provenance": {
+    "assets/MANIFOLD": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "assets/PWR-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "assets/PWR-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "assets/SEP-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "assets/SEP-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "assets/COMP": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "assets/EXP-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "assets/EXP-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "edges/feed": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "edges/train-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "edges/train-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "edges/export-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "edges/export-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "modes/PWR-A/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "modes/PWR-B/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "modes/SEP-A/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "modes/SEP-B/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "modes/EXP-A/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "modes/EXP-B/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "study/hours": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "study/target": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "study/feed": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "study/crews": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "study/spares": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "study/buffer": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "study/closed_access": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "study/maintenance": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "dependencies/SEP-A/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "dependencies/SEP-B/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "dependencies/EXP-A/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "dependencies/EXP-B/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "dependencies/POWER-2OO3/PWR-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "dependencies/POWER-2OO3/PWR-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "dependencies/POWER-2OO3/PWR-C": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "assets/PWR-C": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "assets/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "modes/PWR-C/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+    "standby/COMP": "EXAMPLE – synthetic offshore basis, 20 November 2026"
+  }
+}

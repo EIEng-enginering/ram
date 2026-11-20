@@ -1,0 +1,11 @@
+# Benchmark: offshore demo (cli --demo, 1000 replications, seed 42), 0.2 original source vs 0.3.0.dev1 source
+# Command per run: PYTHONPATH=<tree>/src python -B -m rammodel.cli --demo <tmp> --runs 1000 ; wall-clock via date
+Host: 8 CPU, Linux 6.12.113+, Python 3.12.16; sequential, no concurrent jobs
+original run1 13.11 s
+work run1 15.19 s
+original run2 12.49 s
+work run2 15.21 s
+original run3 12.92 s
+work run3 15.27 s
+Mean: 0.2 = 12.84 s, 0.3 = 15.22 s (+18.6 %). Numerical outputs identical (see REPEATABILITY.txt).
+Onshore 0.3 demo (cli --onshore, 500 reps + 500-rep paired option + 200 x 20000 h utility reference): 15.0 s wall clock.

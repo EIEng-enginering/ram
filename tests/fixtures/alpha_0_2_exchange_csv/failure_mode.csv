@@ -1,0 +1,8 @@
+id,equipment_id,name,detection,distribution,exposure_basis
+EXP-A-trip,EXP-A,Trip,revealed,exponential,calendar
+EXP-B-trip,EXP-B,Trip,revealed,exponential,calendar
+PWR-A-trip,PWR-A,Trip,revealed,exponential,calendar
+PWR-B-trip,PWR-B,Trip,revealed,exponential,calendar
+PWR-C-trip,PWR-C,Trip,revealed,exponential,calendar
+SEP-A-trip,SEP-A,Trip,revealed,exponential,calendar
+SEP-B-trip,SEP-B,Trip,revealed,exponential,calendar

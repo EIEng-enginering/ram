@@ -1,0 +1,29 @@
+3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]
+Linux-6.18.57-x86_64-with-glibc2.41
+SQLite 3.53.1 NumPy 2.3.5 SciPy 1.17.0 PySide6 6.12.0
+test_exact_cover_and_draw_limit (test_engines.AnalysisTests.test_exact_cover_and_draw_limit) ... ok
+test_known_answers (test_engines.AnalysisTests.test_known_answers) ... ok
+test_offshore_replay_and_comparison (test_engines.AnalysisTests.test_offshore_replay_and_comparison) ... ok
+test_partial_capacity (test_engines.AnalysisTests.test_partial_capacity) ... ok
+test_repeatability_and_reference (test_engines.AnalysisTests.test_repeatability_and_reference) ... ok
+test_spare_and_crew_keep_busy_fraction_bounded (test_engines.AnalysisTests.test_spare_and_crew_keep_busy_fraction_bounded) ... ok
+test_standby_simulation_against_markov (test_engines.AnalysisTests.test_standby_simulation_against_markov) ... ok
+test_unsupported_and_missing_inputs (test_engines.AnalysisTests.test_unsupported_and_missing_inputs) ... ok
+test_utility_service_dependency_vote (test_engines.AnalysisTests.test_utility_service_dependency_vote) ... ok
+test_zero_observed_failure_has_upper_uncertainty (test_engines.AnalysisTests.test_zero_observed_failure_has_upper_uncertainty) ... ok
+test_create_and_reopen_with_literal_path (test_storage.CaseStorageTests.test_create_and_reopen_with_literal_path) ... ok
+test_foreign_database_is_preserved (test_storage.CaseStorageTests.test_foreign_database_is_preserved) ... ok
+test_future_schema_rejected (test_storage.CaseStorageTests.test_future_schema_rejected) ... ok
+test_migration_rolls_back_as_a_unit (test_storage.CaseStorageTests.test_migration_rolls_back_as_a_unit) ... ok
+test_zero_distinct_from_missing_and_source_required (test_storage.CaseStorageTests.test_zero_distinct_from_missing_and_source_required) ... ok
+test_offscreen_windows_and_linked_views (test_workflow.Desktop.test_offscreen_windows_and_linked_views) ... This plugin does not support propagateSizeHints()
+ok
+test_ai_output_boundaries (test_workflow.Workflows.test_ai_output_boundaries) ... ok
+test_csv_failed_import_rolls_back (test_workflow.Workflows.test_csv_failed_import_rolls_back) ... ok
+test_excel_csv_preview_roundtrip_and_binding (test_workflow.Workflows.test_excel_csv_preview_roundtrip_and_binding) ... ok
+test_report_review_stale_and_formats (test_workflow.Workflows.test_report_review_stale_and_formats) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 4.157s
+
+OK

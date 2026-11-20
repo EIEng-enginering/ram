@@ -1,0 +1,3 @@
+Initial Linux Qt offscreen launch failed in Diagram.draw:
+AttributeError: 'NoneType' object has no attribute 'clear'
+Cause: the temporary QGraphicsScene supplied to the constructor was not retained.

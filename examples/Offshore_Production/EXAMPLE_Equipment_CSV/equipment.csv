@@ -1,0 +1,11 @@
+id,subsystem_id,tag,equipment_class
+COMP,offshore,COMP,COMP
+EXP-A,offshore,EXP-A,EXP
+EXP-B,offshore,EXP-B,EXP
+MANIFOLD,offshore,MANIFOLD,MANIFOLD
+POWER-2OO3,offshore,POWER-2OO3,POWER
+PWR-A,offshore,PWR-A,PWR
+PWR-B,offshore,PWR-B,PWR
+PWR-C,offshore,PWR-C,PWR
+SEP-A,offshore,SEP-A,SEP
+SEP-B,offshore,SEP-B,SEP

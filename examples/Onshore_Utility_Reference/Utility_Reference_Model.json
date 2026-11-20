@@ -1,0 +1,97 @@
+{
+  "name": "Independent utility reference case",
+  "example": true,
+  "basis": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+  "source": "inlet",
+  "sink": "sales",
+  "target": 100,
+  "hours": 20000,
+  "volume_unit": "m3",
+  "assets": [
+    {
+      "id": "GRID",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 990,
+          "loss": 1.0,
+          "logistics": 0.0,
+          "mobilisation": 0.0,
+          "repair": 10,
+          "repair_distribution": "exponential"
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 190,
+          "loss": 1.0,
+          "logistics": 0.0,
+          "mobilisation": 0.0,
+          "repair": 10,
+          "repair_distribution": "exponential"
+        }
+      ],
+      "requires": [
+        "GRID"
+      ]
+    },
+    {
+      "id": "C2",
+      "modes": [
+        {
+          "id": "trip",
+          "distribution": "exponential",
+          "mtbf": 190,
+          "loss": 1.0,
+          "logistics": 0.0,
+          "mobilisation": 0.0,
+          "repair": 10,
+          "repair_distribution": "exponential"
+        }
+      ],
+      "requires": [
+        "GRID"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "c1",
+      "from": "inlet",
+      "to": "sales",
+      "capacity": 60,
+      "assets": [
+        "C1"
+      ]
+    },
+    {
+      "id": "c2",
+      "from": "inlet",
+      "to": "sales",
+      "capacity": 60,
+      "assets": [
+        "C2"
+      ]
+    }
+  ],
+  "provenance": {
+    "assets/GRID": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "assets/C1": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "assets/C2": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "edges/c1": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "edges/c2": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "modes/GRID/trip": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "modes/C1/trip": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "modes/C2/trip": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "dependencies/C1/GRID": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "dependencies/C2/GRID": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "study/target": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+    "study/hours": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)"
+  }
+}

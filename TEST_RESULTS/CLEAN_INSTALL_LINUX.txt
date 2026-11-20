@@ -1,0 +1,10 @@
+Clean install check · 2026-11-20 11:22 AWST
+Fresh uv venv, Python 3.12.16; 'uv pip install <extracted ZIP root>' (non-editable, so the .sql migrations come from package data).
+PYTHONPATH unset. Installed rammodel 0.3.0.dev1 from site-packages, schema 3.
+python -m rammodel.cli --onshore '/tmp/clean & Ünï case' --runs 20 -> mean efficiency 99.597653 %, utility reference pass=True
+tools/verify_reports.py on that folder -> PASS (9 metrics)
+Suite from the extracted ZIP with this venv:
+----------------------------------------------------------------------
+Ran 82 tests in 34.622s
+
+OK (skipped=1)

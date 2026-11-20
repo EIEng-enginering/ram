@@ -1,0 +1,12 @@
+Python 3.12.14
+Linux-6.18.57-x86_64-with-glibc2.41 3.53.1
+test_create_and_reopen_with_literal_path (test_storage.CaseStorageTests.test_create_and_reopen_with_literal_path) ... ok
+test_foreign_database_is_preserved (test_storage.CaseStorageTests.test_foreign_database_is_preserved) ... ok
+test_future_schema_rejected (test_storage.CaseStorageTests.test_future_schema_rejected) ... ok
+test_migration_rolls_back_as_a_unit (test_storage.CaseStorageTests.test_migration_rolls_back_as_a_unit) ... ok
+test_zero_distinct_from_missing_and_source_required (test_storage.CaseStorageTests.test_zero_distinct_from_missing_and_source_required) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.009s
+
+OK

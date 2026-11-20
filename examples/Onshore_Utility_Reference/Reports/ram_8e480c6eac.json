@@ -1,0 +1,5470 @@
+{
+  "status": "DRAFT | EXAMPLE DATA",
+  "limits": "Single product per model, piecewise-constant rates, lexicographic LP routing. Calendar or operating exposure as entered. standby_pair assets use the 0.2 dedicated exponential channel; standby groups use the shared crew and spares. Loss groups record co-occurring outages and can include incidental failures; counterfactual gains are reported separately. Unmet demand is classified lost, recovered or potentially deferred only under the stated recovery policy. Economic values derive solely from entered assumptions. Mean intervals are approximate and do not account for repeated stopping checks. Results depend on study inputs. SIL/PFD and standards conformity are outside scope.",
+  "claims": [],
+  "run": {
+    "analysis": {
+      "larger_product_tank": {
+        "alternative": {
+          "ci95": [
+            0.998050448605767,
+            0.9985861459973194
+          ],
+          "halfwidth": 0.00026784869577623475,
+          "kind": "sampling",
+          "mean": 0.9983182973015432,
+          "p10": 0.994266968278628,
+          "p50": 0.9998761229181048,
+          "p90": 1.0000000000000002
+        },
+        "alternative_hash": "dc1182605bc5cff5cbd581c24ab092898033abb7007bcd9fb5a70c07cd7eaeba",
+        "base": {
+          "ci95": [
+            0.9970365219269822,
+            0.9976771910625187
+          ],
+          "halfwidth": 0.00032033456776826445,
+          "kind": "sampling",
+          "mean": 0.9973568564947505,
+          "p10": 0.9929164871792001,
+          "p50": 0.9988143089698969,
+          "p90": 1.0
+        },
+        "base_hash": "c0d26fac828cd5212c282f5d68a7b44247492d3684c798160fa15d6df41dcae2",
+        "difference": {
+          "ci95": [
+            0.0008802136344703352,
+            0.0010426679791153055
+          ],
+          "halfwidth": 8.122717232248517e-05,
+          "kind": "paired_delta",
+          "mean": 0.0009614408067928204,
+          "p10": 0.0,
+          "p50": 0.000961446014805245,
+          "p90": 0.002196716345538985,
+          "significant": true
+        },
+        "n": 500,
+        "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference).",
+        "seed": 42
+      },
+      "utility_reference": {
+        "case": "Independent utility reference case",
+        "expected": 0.949905,
+        "expected_derivation": "0.99 * (0.95^2 + 2*0.95*0.05*0.6) = 0.949905",
+        "hours": 20000,
+        "ignoring_shared_utility": 0.9595,
+        "pass": true,
+        "replications": 200,
+        "seed": 11,
+        "simulated_mean": 0.9496570608530766,
+        "standard_error": 0.0003556096621399289,
+        "tolerance": 0.0029224386485597158,
+        "tolerance_rule": "4 SE + 0.0015 start-up bias"
+      }
+    },
+    "basis": {
+      "contractual_demand": 832080.0,
+      "horizon_h": 8760.0,
+      "initial": 500,
+      "maximum": 500,
+      "no_failure_delivery": 832079.9999999999,
+      "statistic": "Lower-tail percentiles and approximate Student-t mean intervals",
+      "target_rate": 100.0,
+      "volume_unit": "m3"
+    },
+    "code_hash": "bc2ce9e50d892b4362ec4d3dcde6a0ec76d7040f7ee86457e4c2bc519a2f1e27",
+    "code_version": "0.3.0.dev1",
+    "created": "2026-11-20T03:09:00.951402+00:00",
+    "environment": {
+      "numpy": "2.5.5",
+      "platform": "Linux-6.12.113+-x86_64-with-glibc2.41",
+      "python": "3.12.16",
+      "scipy": "1.18.1"
+    },
+    "id": "8e480c6eac8a4896952f95904c834b89",
+    "library_hash": "71f995f33e1aada32e9f189266e4a2ca0b6ac0841408075d703fe0ee3637a6e6",
+    "method": "rammodel-des-0.3",
+    "method_profile": "0.3 features: buffers, calendar_start, common_cause, deferral, demand_schedule, economics, standby_groups, weather_policy, edge:priority, edge:yield, mode:demand, mode:exposure, mode:idle_factor, mode:repair_distribution",
+    "model": {
+      "assets": [
+        {
+          "explicit_no_failures": true,
+          "id": "INLET",
+          "modes": []
+        },
+        {
+          "id": "GRID",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "id": "trip",
+              "logistics": 0.0,
+              "loss": 1.0,
+              "mobilisation": 0.0,
+              "mtbf": 3000,
+              "repair": 4,
+              "repair_distribution": "exponential"
+            }
+          ]
+        },
+        {
+          "id": "COMP-1",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "exposure": "operating",
+              "id": "trip",
+              "logistics": 0.0,
+              "loss": 1.0,
+              "mobilisation": 0.0,
+              "mtbf": 1500,
+              "repair": 24,
+              "repair_distribution": "exponential"
+            }
+          ],
+          "requires": [
+            "GRID"
+          ]
+        },
+        {
+          "id": "COMP-2",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "exposure": "operating",
+              "id": "trip",
+              "logistics": 0.0,
+              "loss": 1.0,
+              "mobilisation": 0.0,
+              "mtbf": 1500,
+              "repair": 24,
+              "repair_distribution": "exponential"
+            }
+          ],
+          "requires": [
+            "GRID"
+          ]
+        },
+        {
+          "id": "DEHY",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "id": "trip",
+              "logistics": 2.0,
+              "loss": 1.0,
+              "mobilisation": 0.0,
+              "mtbf": 4000,
+              "repair": 12,
+              "repair_distribution": "exponential"
+            }
+          ]
+        },
+        {
+          "id": "PUMP-A",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "exposure": "operating",
+              "id": "trip",
+              "idle_factor": 0.1,
+              "logistics": 0.0,
+              "loss": 1.0,
+              "mobilisation": 0.0,
+              "mtbf": 1200,
+              "repair": 8,
+              "repair_distribution": "exponential"
+            },
+            {
+              "distribution": "demand",
+              "id": "start",
+              "logistics": 0.0,
+              "loss": 1.0,
+              "mobilisation": 0.0,
+              "probability": 0.02,
+              "repair": 8.0,
+              "repair_distribution": "exponential"
+            }
+          ],
+          "requires": [
+            "GRID"
+          ]
+        },
+        {
+          "id": "PUMP-B",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "exposure": "operating",
+              "id": "trip",
+              "idle_factor": 0.1,
+              "logistics": 0.0,
+              "loss": 1.0,
+              "mobilisation": 0.0,
+              "mtbf": 1200,
+              "repair": 8,
+              "repair_distribution": "exponential"
+            },
+            {
+              "distribution": "demand",
+              "id": "start",
+              "logistics": 0.0,
+              "loss": 1.0,
+              "mobilisation": 0.0,
+              "probability": 0.02,
+              "repair": 8.0,
+              "repair_distribution": "exponential"
+            }
+          ],
+          "requires": [
+            "GRID"
+          ]
+        }
+      ],
+      "basis": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+      "buffers": [
+        {
+          "capacity": 300,
+          "draw": 140,
+          "fill": 30,
+          "id": "SLUG",
+          "initial": 150,
+          "node": "slug"
+        },
+        {
+          "capacity": 800,
+          "draw": 110,
+          "fill": 40,
+          "id": "TANK",
+          "initial": 400,
+          "node": "tank"
+        }
+      ],
+      "calendar_start": "2027-01-01T00:00",
+      "closed_access": [
+        [
+          2000,
+          2072
+        ]
+      ],
+      "common_cause": [
+        {
+          "assets": [
+            "COMP-1",
+            "COMP-2"
+          ],
+          "id": "comp-ccf",
+          "logistics": 0.0,
+          "loss": 1.0,
+          "mobilisation": 0.0,
+          "mtbf": 30000,
+          "repair": 48.0,
+          "repair_distribution": "exponential"
+        }
+      ],
+      "crews": 2,
+      "deferral": {
+        "recovery_rate": 10,
+        "window_h": 168
+      },
+      "demand_schedule": [
+        [
+          0,
+          100
+        ],
+        [
+          2160,
+          90
+        ],
+        [
+          6552,
+          100
+        ]
+      ],
+      "economics": {
+        "cost_basis": "2027 real, synthetic",
+        "currency": "AUD",
+        "discount_rate_per_year": 0.07,
+        "source": "EXAMPLE assumption",
+        "value_per_unit": 40.0
+      },
+      "edges": [
+        {
+          "assets": [
+            "INLET"
+          ],
+          "capacity": 130,
+          "from": "field",
+          "id": "inlet",
+          "to": "slug"
+        },
+        {
+          "assets": [
+            "COMP-1",
+            "DEHY"
+          ],
+          "capacity": 70,
+          "from": "slug",
+          "id": "train-1",
+          "priority": 1,
+          "to": "plant",
+          "yield": 0.98
+        },
+        {
+          "assets": [
+            "COMP-2",
+            "DEHY"
+          ],
+          "capacity": 70,
+          "from": "slug",
+          "id": "train-2",
+          "priority": 2,
+          "to": "plant",
+          "yield": 0.98
+        },
+        {
+          "capacity": 140,
+          "from": "plant",
+          "id": "rundown",
+          "to": "tank"
+        },
+        {
+          "assets": [
+            "PUMP-A"
+          ],
+          "capacity": 110,
+          "from": "tank",
+          "id": "pump-A",
+          "to": "customer"
+        },
+        {
+          "assets": [
+            "PUMP-B"
+          ],
+          "capacity": 110,
+          "from": "tank",
+          "id": "pump-B",
+          "to": "customer"
+        }
+      ],
+      "example": true,
+      "feed": 130,
+      "hours": 8760,
+      "maintenance": [
+        {
+          "asset": "COMP-1",
+          "end": 3048,
+          "start": 3000
+        },
+        {
+          "asset": "COMP-2",
+          "end": 3548,
+          "start": 3500
+        }
+      ],
+      "name": "Synthetic onshore gas plant",
+      "provenance": {
+        "assets/COMP-1": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "assets/COMP-2": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "assets/DEHY": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "assets/GRID": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "assets/INLET": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "assets/PUMP-A": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "assets/PUMP-B": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "ccf/comp-ccf": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "dependencies/COMP-1/GRID": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "dependencies/COMP-2/GRID": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "dependencies/PUMP-A/GRID": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "dependencies/PUMP-B/GRID": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "edges/inlet": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "edges/pump-A": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "edges/pump-B": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "edges/rundown": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "edges/train-1": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "edges/train-2": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "modes/COMP-1/trip": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "modes/COMP-2/trip": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "modes/DEHY/trip": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "modes/GRID/trip": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "modes/PUMP-A/start": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "modes/PUMP-A/trip": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "modes/PUMP-B/start": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "modes/PUMP-B/trip": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "standby/export-pumps": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/buffers": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/calendar_start": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/closed_access": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/common_cause": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/crews": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/deferral": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/demand_schedule": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/economics": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/feed": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/hours": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/maintenance": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/standby_groups": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/target": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)",
+        "study/weather_policy": "EXAMPLE – synthetic onshore basis, 20 November 2026 (method 0.3 features)"
+      },
+      "sink": "customer",
+      "source": "field",
+      "standby_groups": [
+        {
+          "id": "export-pumps",
+          "members": [
+            "PUMP-A",
+            "PUMP-B"
+          ],
+          "running": 1
+        }
+      ],
+      "target": 100,
+      "volume_unit": "m3",
+      "weather_policy": "suspend"
+    },
+    "model_hash": "c0d26fac828cd5212c282f5d68a7b44247492d3684c798160fa15d6df41dcae2",
+    "result": {
+      "balance_max_abs_residual": 2.1907908376306295e-08,
+      "contributors": {
+        "asset_availability": {
+          "COMP-1": 0.9759808683129556,
+          "COMP-2": 0.9752318018227544,
+          "DEHY": 0.9965082920783459,
+          "GRID": 0.9985555544877543,
+          "INLET": 1.0,
+          "PUMP-A": 0.9952777927307005,
+          "PUMP-B": 0.9966632162628483
+        },
+        "failures": {
+          "CCF:comp-ccf": 0.332,
+          "COMP-1/trip": 5.7,
+          "COMP-2/trip": 5.798,
+          "DEHY/trip": 2.126,
+          "GRID/trip": 2.896,
+          "PUMP-A/start": 0.106,
+          "PUMP-A/trip": 4.728,
+          "PUMP-B/start": 0.074,
+          "PUMP-B/trip": 3.236
+        },
+        "loss_groups": {
+          "@ccf/comp-ccf": 1087.1373443454634,
+          "@ccf/comp-ccf + COMP-1/planned": 14.07374006226073,
+          "@ccf/comp-ccf + COMP-1/trip": 17.91448815791621,
+          "@ccf/comp-ccf + COMP-2/planned": 8.64,
+          "@ccf/comp-ccf + DEHY/trip": 0.4710688475130155,
+          "@ccf/comp-ccf + GRID/trip": 2.121417845863343,
+          "@ccf/comp-ccf + PUMP-B/trip": 3.614435543899981,
+          "COMP-1/planned": 236.99504290613672,
+          "COMP-1/trip": 1064.9405268157811,
+          "COMP-1/trip + COMP-1/planned": 5.255388638223437,
+          "COMP-1/trip + COMP-2/planned": 50.15087430039784,
+          "COMP-1/trip + COMP-2/trip": 185.07105887773147,
+          "COMP-1/trip + COMP-2/trip + GRID/trip": 6.296105800790974,
+          "COMP-1/trip + DEHY/trip": 25.504290134842012,
+          "COMP-1/trip + GRID/trip": 15.256729608748069,
+          "COMP-1/trip + GRID/trip + COMP-2/planned": 1.0546889349355753,
+          "COMP-1/trip + PUMP-A/trip": 3.8808133159347316,
+          "COMP-1/trip + PUMP-A/trip + COMP-2/planned": 0.989924965279015,
+          "COMP-1/trip + PUMP-B/trip": 3.154439811355135,
+          "COMP-2/planned": 251.31869034945956,
+          "COMP-2/trip": 1165.7614545902986,
+          "COMP-2/trip + COMP-1/planned": 53.7684507812877,
+          "COMP-2/trip + COMP-2/planned": 4.002677585262663,
+          "COMP-2/trip + DEHY/trip": 16.71173588968091,
+          "COMP-2/trip + GRID/trip": 17.948007917936227,
+          "COMP-2/trip + GRID/trip + PUMP-A/trip": 1.1466818679006245,
+          "COMP-2/trip + PUMP-A/start + PUMP-B/trip": 1.2901086284756276,
+          "COMP-2/trip + PUMP-A/trip": 3.0655620261017535,
+          "COMP-2/trip + PUMP-A/trip + PUMP-B/start": 1.4466760401952752,
+          "COMP-2/trip + PUMP-B/start": 0.10456020179641458,
+          "COMP-2/trip + PUMP-B/trip": 3.8603447367166854,
+          "COMP-2/trip + PUMP-B/trip + COMP-1/planned": 1.3196207225792114,
+          "DEHY/trip": 1507.0843437927167,
+          "DEHY/trip + COMP-1/planned": 13.81838186674414,
+          "DEHY/trip + COMP-2/planned": 10.614286540383173,
+          "DEHY/trip + GRID/trip": 3.0783538247383877,
+          "DEHY/trip + PUMP-A/start": 0.8425224360023094,
+          "DEHY/trip + PUMP-A/trip": 5.615345339351716,
+          "DEHY/trip + PUMP-A/trip + PUMP-B/trip": 0.6463241582869159,
+          "DEHY/trip + PUMP-B/trip": 0.6593107218311616,
+          "GRID/trip": 1137.3583277139585,
+          "GRID/trip + COMP-1/planned": 7.30124160637215,
+          "GRID/trip + COMP-2/planned": 7.141854632660033,
+          "GRID/trip + PUMP-A/trip": 3.7484323098823733,
+          "GRID/trip + PUMP-B/trip": 3.793439753773764,
+          "PUMP-A/start + PUMP-B/trip": 27.065930134849683,
+          "PUMP-A/start + PUMP-B/trip + COMP-1/planned": 0.037468887546874614,
+          "PUMP-A/start + PUMP-B/trip + COMP-2/planned": 0.4629075702709724,
+          "PUMP-A/trip + COMP-1/planned": 1.2668329042244826,
+          "PUMP-A/trip + COMP-2/planned": 0.19572464007653276,
+          "PUMP-A/trip + PUMP-B/start": 23.032590493145044,
+          "PUMP-A/trip + PUMP-B/start + COMP-2/planned": 0.11866720324597736,
+          "PUMP-A/trip + PUMP-B/trip": 22.962073761593384,
+          "PUMP-A/trip + PUMP-B/trip + COMP-1/planned": 1.2034945293985675,
+          "PUMP-B/start + COMP-2/planned": 0.03880844456410396,
+          "PUMP-B/trip + COMP-1/planned": 0.4785011431797009,
+          "PUMP-B/trip + COMP-2/planned": 0.13350402117486923
+        },
+        "mode_downtime": {
+          "CCF:comp-ccf": 14.43149332529789,
+          "COMP-1/trip": 136.4003444310256,
+          "COMP-2/trip": 142.77017980844218,
+          "DEHY/trip": 30.58736139369651,
+          "GRID/trip": 12.653342687270372,
+          "PUMP-A/start": 0.9963802653713035,
+          "PUMP-A/trip": 40.37015541369047,
+          "PUMP-B/start": 0.6674198723905881,
+          "PUMP-B/trip": 28.56280566506269
+        }
+      },
+      "converged": true,
+      "convergence": [
+        {
+          "halfwidth": 0.00032033456776826445,
+          "mean": 0.9973568564947505,
+          "n": 500
+        }
+      ],
+      "diagnostics": {
+        "replications": 500,
+        "replications_with_failure_events": 500,
+        "replications_with_shortfall": 500,
+        "shortfall_relative_halfwidth": 0.05200030877571473,
+        "zero_sample_variance": false
+      },
+      "economics": {
+        "cost_basis": "2027 real, synthetic",
+        "currency": "AUD",
+        "discount_rate": 0.07,
+        "source": "EXAMPLE assumption",
+        "timing": "continuous discounting at the time volume is classified lost",
+        "value_per_unit": 40.0
+      },
+      "metrics": {
+        "buffer_end": {
+          "ci95": [
+            1041.7410610599131,
+            1069.76531875734
+          ],
+          "halfwidth": 14.012128848713443,
+          "mean": 1055.7531899086266,
+          "p10": 1099.9999999987285,
+          "p50": 1099.9999999992433,
+          "p90": 1099.9999999994923
+        },
+        "crew_utilisation": {
+          "ci95": [
+            0.0220256720149229,
+            0.02326978774704458
+          ],
+          "halfwidth": 0.0006220578660608415,
+          "mean": 0.02264772988098374,
+          "p10": 0.0137423223336592,
+          "p50": 0.022222397534999196,
+          "p90": 0.031624548042217066
+        },
+        "deferred": {
+          "ci95": [
+            52.5863495604229,
+            181.72148172129016
+          ],
+          "halfwidth": 64.56756608043362,
+          "mean": 117.15391564085652,
+          "p10": 0.0,
+          "p50": 0.0,
+          "p90": 0.0
+        },
+        "delivered": {
+          "ci95": [
+            829614.1491650032,
+            830147.2371393006
+          ],
+          "halfwidth": 266.54398714861736,
+          "mean": 829880.6931521519,
+          "p10": 826185.9506520688,
+          "p50": 831093.4102076718,
+          "p90": 832080.0
+        },
+        "efficiency": {
+          "ci95": [
+            0.9970365219269822,
+            0.9976771910625187
+          ],
+          "halfwidth": 0.00032033456776826445,
+          "mean": 0.9973568564947505,
+          "p10": 0.9929164871792001,
+          "p50": 0.9988143089698969,
+          "p90": 1.0
+        },
+        "lost": {
+          "ci95": [
+            1821.3482991117603,
+            2342.957565302529
+          ],
+          "halfwidth": 260.80463309538436,
+          "mean": 2082.1529322071447,
+          "p10": 0.0,
+          "p50": 945.0553288778153,
+          "p90": 5601.867897710656
+        },
+        "lost_value": {
+          "ci95": [
+            70534.04370373888,
+            90801.77202960562
+          ],
+          "halfwidth": 10133.864162933374,
+          "mean": 80667.90786667225,
+          "p10": 0.0,
+          "p50": 36177.70754844746,
+          "p90": 218169.2295984458
+        },
+        "recovered": {
+          "ci95": [
+            4658.3560060426125,
+            5008.961535622863
+          ],
+          "halfwidth": 175.30276479012528,
+          "mean": 4833.658770832738,
+          "p10": 2585.502197708936,
+          "p50": 4586.79513697003,
+          "p90": 7538.7007184687545
+        },
+        "shortfall": {
+          "ci95": [
+            6667.249234900388,
+            7398.682002461159
+          ],
+          "halfwidth": 365.7163837803858,
+          "mean": 7032.965618680773,
+          "p10": 2814.619185440113,
+          "p50": 6104.032993083083,
+          "p90": 13169.595460484134
+        }
+      },
+      "n": 500,
+      "periods_mean": {
+        "2027-01": {
+          "delivered": 74141.90776950229,
+          "demand": 74400.0,
+          "hours": 744.0,
+          "lost": 169.38951713180873,
+          "recovered": 329.5138867039066,
+          "shortfall": 587.6061172016302
+        },
+        "2027-02": {
+          "delivered": 67056.36372156847,
+          "demand": 67200.0,
+          "hours": 672.0,
+          "lost": 178.72195206189306,
+          "recovered": 398.34762257874405,
+          "shortfall": 541.9839010102744
+        },
+        "2027-03": {
+          "delivered": 73910.77980253921,
+          "demand": 74400.0,
+          "hours": 744.0,
+          "lost": 169.74637825450682,
+          "recovered": 442.84993829635175,
+          "shortfall": 932.0701357571326
+        },
+        "2027-04": {
+          "delivered": 64799.44284892379,
+          "demand": 64800.0,
+          "hours": 720.0,
+          "lost": 333.3768181149625,
+          "recovered": 330.32013417641014,
+          "shortfall": 330.87728525261497
+        },
+        "2027-05": {
+          "delivered": 66749.11564172021,
+          "demand": 66960.0,
+          "hours": 744.0,
+          "lost": 143.55515761925605,
+          "recovered": 800.3414923057941,
+          "shortfall": 1011.2258505855849
+        },
+        "2027-06": {
+          "delivered": 64706.27782792157,
+          "demand": 64800.0,
+          "hours": 720.0,
+          "lost": 145.99816159167364,
+          "recovered": 305.1230015724506,
+          "shortfall": 398.84517365089255
+        },
+        "2027-07": {
+          "delivered": 66833.0757030144,
+          "demand": 66960.0,
+          "hours": 744.0,
+          "lost": 145.66346685382084,
+          "recovered": 298.22541540441,
+          "shortfall": 425.1497123900051
+        },
+        "2027-08": {
+          "delivered": 66806.78594175595,
+          "demand": 66960.0,
+          "hours": 744.0,
+          "lost": 121.95591112589818,
+          "recovered": 295.3425746883299,
+          "shortfall": 448.5566329323865
+        },
+        "2027-09": {
+          "delivered": 64672.86164332673,
+          "demand": 64800.0,
+          "hours": 720.0,
+          "lost": 139.74018717484597,
+          "recovered": 301.2270564543035,
+          "shortfall": 428.36541312757885
+        },
+        "2027-10": {
+          "delivered": 74193.89810761079,
+          "demand": 74400.0,
+          "hours": 744.0,
+          "lost": 171.59307628898532,
+          "recovered": 438.5810696339666,
+          "shortfall": 644.6829620231899
+        },
+        "2027-11": {
+          "delivered": 71855.20078802218,
+          "demand": 72000.0,
+          "hours": 720.0,
+          "lost": 189.04195031325966,
+          "recovered": 437.12608650605944,
+          "shortfall": 581.9252984838818
+        },
+        "2027-12": {
+          "delivered": 74154.98335624645,
+          "demand": 74400.0,
+          "hours": 744.0,
+          "lost": 173.37035567623337,
+          "recovered": 456.6604925120088,
+          "shortfall": 701.677136265564
+        }
+      },
+      "preview": {
+        "asset_availability": {
+          "COMP-1": 0.9613943362328083,
+          "COMP-2": 0.9463389869490896,
+          "DEHY": 0.995117469449019,
+          "GRID": 0.9971060339958318,
+          "INLET": 1.0,
+          "PUMP-A": 0.9945005703006069,
+          "PUMP-B": 0.9983271518345048
+        },
+        "balance": {
+          "buffer:SLUG:in": 150.0,
+          "buffer:SLUG:out": 1.1133827173220754e-09,
+          "buffer:TANK:in": 10220.166966351444,
+          "buffer:TANK:out": 9820.166966351368,
+          "delivered": 820359.8077826946,
+          "inventory_change": 549.9999999988866,
+          "residual": -1.4562829164788127e-08,
+          "supply": 837660.0079415091,
+          "yield_loss": 16750.200158830226
+        },
+        "buffer_end": 1099.9999999988866,
+        "buffer_levels": {
+          "SLUG": 299.9999999988866,
+          "TANK": 800.0
+        },
+        "contract": 832080.0,
+        "crew_utilisation": 0.03833907489228899,
+        "deferred": 0,
+        "delivered": 820359.8077826946,
+        "efficiency": 0.9859145848748854,
+        "events": [
+          {
+            "event": "demand_change",
+            "hour": 0.0,
+            "item": 100.0
+          },
+          {
+            "event": "fail_op",
+            "hour": 837.8785076844961,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              1
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 837.8785076844961,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 837.8785076844961,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 837.8785076844961,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "start_failure",
+            "hour": 837.8785076844961,
+            "item": [
+              "PUMP-B",
+              "start"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 837.8785076844961,
+            "item": [
+              "PUMP-B",
+              "start"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 837.8785076844961,
+            "item": [
+              "PUMP-B",
+              "start"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 837.8785076844961,
+            "item": [
+              "PUMP-B",
+              "start"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 839.0689510221523,
+            "item": [
+              [
+                "PUMP-B",
+                "start"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 839.0689510221523,
+            "item": "PUMP-B"
+          },
+          {
+            "event": "restore_job",
+            "hour": 843.725482616499,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 1441.6306412679792,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              3
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 1441.6306412679792,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 1441.6306412679792,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 1441.6306412679792,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 1441.6306412679792,
+            "item": "PUMP-A"
+          },
+          {
+            "event": "restore_job",
+            "hour": 1442.6765539052365,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "access_close",
+            "hour": 2000.0,
+            "item": null
+          },
+          {
+            "event": "access_open",
+            "hour": 2072.0,
+            "item": null
+          },
+          {
+            "event": "demand_change",
+            "hour": 2160.0,
+            "item": 90.0
+          },
+          {
+            "event": "fail_op",
+            "hour": 2370.028160728909,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              4
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 2370.028160728909,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 2370.028160728909,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 2370.028160728909,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 2370.028160728909,
+            "item": "PUMP-B"
+          },
+          {
+            "event": "restore_job",
+            "hour": 2375.613095007946,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 2387.630530920183,
+            "item": [
+              "@ccf",
+              "comp-ccf"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 2387.630530920183,
+            "item": [
+              "@ccf",
+              "comp-ccf"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 2387.630530920183,
+            "item": [
+              "@ccf",
+              "comp-ccf"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 2387.630530920183,
+            "item": [
+              "@ccf",
+              "comp-ccf"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 2504.4350072603547,
+            "item": [
+              [
+                "@ccf",
+                "comp-ccf"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 2582.851214819688,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              8
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 2582.851214819688,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 2582.851214819688,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 2582.851214819688,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 2582.851214819688,
+            "item": "PUMP-A"
+          },
+          {
+            "event": "restore_job",
+            "hour": 2583.0597800799733,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 2853.327413394174,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              7
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 2853.327413394174,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 2853.327413394174,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 2853.327413394174,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 2853.327413394174,
+            "item": "PUMP-B"
+          },
+          {
+            "event": "restore_job",
+            "hour": 2854.9341068065746,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "maintenance_start",
+            "hour": 3000.0,
+            "item": "COMP-1"
+          },
+          {
+            "event": "maintenance_end",
+            "hour": 3048.0,
+            "item": "COMP-1"
+          },
+          {
+            "event": "fail_op",
+            "hour": 3184.0760292726727,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              7
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 3184.0760292726727,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 3184.0760292726727,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 3184.0760292726727,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 3207.65819922703,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 3322.0613421123626,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              11
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 3322.0613421123626,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 3322.0613421123626,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 3322.0613421123626,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 3322.0613421123626,
+            "item": "PUMP-A"
+          },
+          {
+            "event": "restore_job",
+            "hour": 3328.3535857521474,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "maintenance_start",
+            "hour": 3500.0,
+            "item": "COMP-2"
+          },
+          {
+            "event": "maintenance_end",
+            "hour": 3548.0,
+            "item": "COMP-2"
+          },
+          {
+            "event": "fail_op",
+            "hour": 3582.1104746634865,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              7
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 3582.1104746634865,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 3582.1104746634865,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 3582.1104746634865,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 3645.948016373901,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 4765.53079121892,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              9
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 4765.53079121892,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 4765.53079121892,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 4765.53079121892,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 4785.627584842805,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 5430.9173508320455,
+            "item": [
+              "GRID",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 5430.9173508320455,
+            "item": [
+              "GRID",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 5430.9173508320455,
+            "item": [
+              "GRID",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 5430.9173508320455,
+            "item": [
+              "GRID",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 5432.0622833167745,
+            "item": [
+              [
+                "GRID",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 5432.0622833167745,
+            "item": "PUMP-A"
+          },
+          {
+            "event": "fail",
+            "hour": 5461.804100845894,
+            "item": [
+              "DEHY",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 5461.804100845894,
+            "item": [
+              "DEHY",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 5463.804100845894,
+            "item": [
+              "DEHY",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 5463.804100845894,
+            "item": [
+              "DEHY",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 5502.245450937745,
+            "item": [
+              [
+                "DEHY",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 5585.102479605795,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              14
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 5585.102479605795,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 5585.102479605795,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 5585.102479605795,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 5585.102479605795,
+            "item": "PUMP-B"
+          },
+          {
+            "event": "restore_job",
+            "hour": 5607.16171978268,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 5792.920383435703,
+            "item": [
+              "DEHY",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 5792.920383435703,
+            "item": [
+              "DEHY",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 5794.920383435703,
+            "item": [
+              "DEHY",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 5794.920383435703,
+            "item": [
+              "DEHY",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 5795.250000970445,
+            "item": [
+              [
+                "DEHY",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 5992.1972023186,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              14
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 5992.1972023186,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 5992.1972023186,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 5992.1972023186,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 5992.1972023186,
+            "item": "PUMP-A"
+          },
+          {
+            "event": "restore_job",
+            "hour": 5995.837066650183,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 6066.711550419291,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              17
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 6066.711550419291,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 6066.711550419291,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 6066.711550419291,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 6066.711550419291,
+            "item": "PUMP-B"
+          },
+          {
+            "event": "restore_job",
+            "hour": 6077.043793506074,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 6116.858339225481,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              17
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 6116.858339225481,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 6116.858339225481,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 6116.858339225481,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 6138.514250898381,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 6251.745766741018,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              19
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 6251.745766741018,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 6251.745766741018,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 6251.745766741018,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 6260.854188030621,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "demand_change",
+            "hour": 6552.0,
+            "item": 100.0
+          },
+          {
+            "event": "fail_op",
+            "hour": 7348.509528544028,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              15
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 7348.509528544028,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 7348.509528544028,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 7348.509528544028,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 7422.485225909868,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 7656.442432330805,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              17
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 7656.442432330805,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 7656.442432330805,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 7656.442432330805,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 7730.088851332364,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              21
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 7730.088851332364,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 7730.088851332364,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 7730.088851332364,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 7736.069256243084,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 7739.033240695556,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 7983.922714099086,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              23
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 7983.922714099086,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 7983.922714099086,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 7983.922714099086,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 7984.158855572101,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 8059.133475337768,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              25
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 8059.133475337768,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 8059.133475337768,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 8059.133475337768,
+            "item": [
+              "COMP-1",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 8123.5396440247305,
+            "item": [
+              [
+                "COMP-1",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 8227.760002300969,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              19
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 8227.760002300969,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 8227.760002300969,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 8227.760002300969,
+            "item": [
+              "PUMP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 8227.760002300969,
+            "item": "PUMP-A"
+          },
+          {
+            "event": "restore_job",
+            "hour": 8230.03712302414,
+            "item": [
+              [
+                "PUMP-B",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 8274.737581663896,
+            "item": [
+              "GRID",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 8274.737581663896,
+            "item": [
+              "GRID",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 8274.737581663896,
+            "item": [
+              "GRID",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 8274.737581663896,
+            "item": [
+              "GRID",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 8298.943791375681,
+            "item": [
+              [
+                "GRID",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 8298.943791375681,
+            "item": "PUMP-A"
+          },
+          {
+            "event": "fail_op",
+            "hour": 8357.145001385028,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              21
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 8357.145001385028,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 8357.145001385028,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 8357.145001385028,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 8392.640487051618,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 8440.88801624482,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              23
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 8440.88801624482,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 8440.88801624482,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 8440.88801624482,
+            "item": [
+              "COMP-2",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore_job",
+            "hour": 8467.867323378987,
+            "item": [
+              [
+                "COMP-2",
+                "trip"
+              ],
+              0
+            ]
+          },
+          {
+            "event": "fail_op",
+            "hour": 8568.576686269094,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              22
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 8568.576686269094,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 8568.576686269094,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 8568.576686269094,
+            "item": [
+              "PUMP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "start",
+            "hour": 8568.576686269094,
+            "item": "PUMP-B"
+          },
+          {
+            "event": "restore_job",
+            "hour": 8571.32160454867,
+            "item": [
+              [
+                "PUMP-A",
+                "trip"
+              ],
+              0
+            ]
+          }
+        ],
+        "failures": {
+          "CCF:comp-ccf": 1,
+          "COMP-1/trip": 7,
+          "COMP-2/trip": 5,
+          "DEHY/trip": 2,
+          "GRID/trip": 2,
+          "PUMP-A/start": 0,
+          "PUMP-A/trip": 6,
+          "PUMP-B/start": 1,
+          "PUMP-B/trip": 5
+        },
+        "intervals": [
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 300.0,
+              "TANK": 390.00000000012693
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 98.0000000000294,
+              "train-1": 69.99999999993,
+              "train-2": 30.000000000100002
+            },
+            "end": 5.000000000005,
+            "loss": 0.0,
+            "start": 0.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 19.963503649634873,
+            "loss": 0.0,
+            "start": 5.000000000005,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 837.8785076844961,
+            "loss": 0.0,
+            "start": 19.963503649634873,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-A/trip",
+              "PUMP-B/start"
+            ],
+            "delivery": 0.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 0.0,
+              "rundown": -0.0,
+              "train-1": 0.0,
+              "train-2": -0.0
+            },
+            "end": 839.0689510221523,
+            "loss": 119.04433376562338,
+            "start": 837.8785076844961,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-A/trip"
+            ],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 843.725482616499,
+            "loss": 0.0,
+            "start": 839.0689510221523,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 850.9733843987146,
+            "loss": 0.0,
+            "start": 843.725482616499,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 1441.6306412679792,
+            "loss": 0.0,
+            "start": 850.9733843987146,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-B/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 1442.6765539052365,
+            "loss": 0.0,
+            "start": 1441.6306412679792,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 2000.0,
+            "loss": 0.0,
+            "start": 1442.6765539052365,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 2072.0,
+            "loss": 0.0,
+            "start": 2000.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 2160.0,
+            "loss": 0.0,
+            "start": 2072.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 2370.028160728909,
+            "loss": 0.0,
+            "start": 2160.0,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-A/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 2375.613095007946,
+            "loss": 0.0,
+            "start": 2370.028160728909,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999998505,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 2387.630530920183,
+            "loss": 0.0,
+            "start": 2375.613095007946,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999999762,
+              "TANK": 0.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "@ccf/comp-ccf"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 2396.519419809063,
+            "loss": 0.0,
+            "start": 2387.630530920183,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.999999999887,
+              "TANK": 0.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "@ccf/comp-ccf"
+            ],
+            "delivery": 0.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 0.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 2485.727186113525,
+            "loss": 8028.698967401579,
+            "start": 2396.519419809063,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998683,
+              "TANK": 0.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "@ccf/comp-ccf"
+            ],
+            "delivery": 0.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 0.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 2504.4350072603547,
+            "loss": 1683.7039032146731,
+            "start": 2485.727186113525,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998391,
+              "TANK": 799.9999999999939
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 2533.6320875523243,
+            "loss": 0.0,
+            "start": 2504.4350072603547,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998391,
+              "TANK": 799.9999999999939
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 2564.519419809063,
+            "loss": 0.0,
+            "start": 2533.6320875523243,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998391,
+              "TANK": 799.9999999999939
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 2582.851214819688,
+            "loss": 0.0,
+            "start": 2564.519419809063,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998391,
+              "TANK": 799.9999999999939
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-B/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 2583.0597800799733,
+            "loss": 0.0,
+            "start": 2582.851214819688,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998391,
+              "TANK": 799.9999999999939
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 2653.727186113525,
+            "loss": 0.0,
+            "start": 2583.0597800799733,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998391,
+              "TANK": 799.9999999999939
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 2853.327413394174,
+            "loss": 0.0,
+            "start": 2653.727186113525,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998391,
+              "TANK": 799.9999999999939
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-A/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 2854.9341068065746,
+            "loss": 0.0,
+            "start": 2853.327413394174,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998391,
+              "TANK": 799.9999999999939
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3000.0,
+            "loss": 0.0,
+            "start": 2854.9341068065746,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.999999999821,
+              "TANK": 413.0642546703162
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/planned"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 3018.0811095948447,
+            "loss": 0.0,
+            "start": 3000.0,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998198,
+              "TANK": 387.58876724447276
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/planned"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 3019.271552932501,
+            "loss": 0.0,
+            "start": 3018.0811095948447,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999998017,
+              "TANK": 0.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/planned"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 3037.3831775700933,
+            "loss": 0.0,
+            "start": 3019.271552932501,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999979104,
+              "TANK": 0.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/planned"
+            ],
+            "delivery": 68.6,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 68.6,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 3048.0,
+            "loss": 227.20000000000417,
+            "start": 3037.3831775700933,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997683,
+              "TANK": 622.528000000029
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 3070.7200000000003,
+            "loss": 0.0,
+            "start": 3048.0,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997636,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 3075.465240641711,
+            "loss": 0.0,
+            "start": 3070.7200000000003,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997636,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3136.0760292726727,
+            "loss": 0.0,
+            "start": 3075.465240641711,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997636,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3184.0760292726727,
+            "loss": 0.0,
+            "start": 3136.0760292726727,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999974,
+              "TANK": 295.341562976757
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 3207.65819922703,
+            "loss": 0.0,
+            "start": 3184.0760292726727,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997265,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 3221.1517403239077,
+            "loss": 0.0,
+            "start": 3207.65819922703,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997265,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3288.597082853684,
+            "loss": 0.0,
+            "start": 3221.1517403239077,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997265,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3322.0613421123626,
+            "loss": 0.0,
+            "start": 3288.597082853684,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997265,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-B/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3328.3535857521474,
+            "loss": 0.0,
+            "start": 3322.0613421123626,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997265,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3416.1155549856585,
+            "loss": 0.0,
+            "start": 3328.3535857521474,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997265,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3417.3059983233147,
+            "loss": 0.0,
+            "start": 3416.1155549856585,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999997265,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3500.0,
+            "loss": 0.0,
+            "start": 3417.3059983233147,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999996995,
+              "TANK": 221.80592809290454
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/planned"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 3527.018414575071,
+            "loss": 0.0,
+            "start": 3500.0,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999996924,
+              "TANK": 70.03584220065963
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/planned"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 3534.1104746634865,
+            "loss": 0.0,
+            "start": 3527.018414575071,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999996891,
+              "TANK": 1.8332002582610585e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/planned"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 3537.383177570056,
+            "loss": 0.0,
+            "start": 3534.1104746634865,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999996785,
+              "TANK": 1.8332002582610585e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/planned"
+            ],
+            "delivery": 68.6,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 68.6,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 3548.0,
+            "loss": 227.20000000080213,
+            "start": 3537.383177570056,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999965576,
+              "TANK": 622.5280000022238
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 3570.7200000000803,
+            "loss": 0.0,
+            "start": 3548.0,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999965104,
+              "TANK": 799.9999999999922
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 3575.4652406417317,
+            "loss": 0.0,
+            "start": 3570.7200000000803,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999965104,
+              "TANK": 799.9999999999922
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 3582.1104746634865,
+            "loss": 0.0,
+            "start": 3575.4652406417317,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999961364,
+              "TANK": 3.751665644813329e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 3619.493652233542,
+            "loss": 0.0,
+            "start": 3582.1104746634865,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999995872,
+              "TANK": 3.751665644813329e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 68.6,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 68.6,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 3645.948016373901,
+            "loss": 566.1233926036795,
+            "start": 3619.493652233542,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.999999999558,
+              "TANK": 799.9999999999976
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 3675.1450966658704,
+            "loss": 0.0,
+            "start": 3645.948016373901,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.999999999558,
+              "TANK": 799.9999999999976
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 3702.560355634269,
+            "loss": 0.0,
+            "start": 3675.1450966658704,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.999999999558,
+              "TANK": 799.9999999999976
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 4765.53079121892,
+            "loss": 0.0,
+            "start": 3702.560355634269,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999953786,
+              "TANK": 369.92861644886113
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 4785.627584842805,
+            "loss": 0.0,
+            "start": 4765.53079121892,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999995264,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 4797.126819697113,
+            "loss": 0.0,
+            "start": 4785.627584842805,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999995264,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 5287.613200564552,
+            "loss": 0.0,
+            "start": 4797.126819697113,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999995264,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 5430.9173508320455,
+            "loss": 0.0,
+            "start": 5287.613200564552,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999995264,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "GRID/trip"
+            ],
+            "delivery": 0.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 0.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 5432.0622833167745,
+            "loss": 103.04392362560975,
+            "start": 5430.9173508320455,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999995264,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 5442.3666756793355,
+            "loss": 0.0,
+            "start": 5432.0622833167745,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999995264,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 5461.804100845894,
+            "loss": 0.0,
+            "start": 5442.3666756793355,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999995244,
+              "TANK": 619.99999999982
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "DEHY/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 5463.804100845894,
+            "loss": 0.0,
+            "start": 5461.804100845894,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999995175,
+              "TANK": 3.6834535421803594e-11
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "DEHY/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 5470.692989734774,
+            "loss": 0.0,
+            "start": 5463.804100845894,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999948596,
+              "TANK": 3.6834535421803594e-11
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "DEHY/trip"
+            ],
+            "delivery": 0.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 0.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 5502.245450937745,
+            "loss": 2839.721508267412,
+            "start": 5470.692989734774,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999945675,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 5531.4425312297135,
+            "loss": 0.0,
+            "start": 5502.245450937745,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999945675,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 5555.674825286866,
+            "loss": 0.0,
+            "start": 5531.4425312297135,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999945675,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 5556.7052645231215,
+            "loss": 0.0,
+            "start": 5555.674825286866,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999945675,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 5585.102479605795,
+            "loss": 0.0,
+            "start": 5556.7052645231215,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999945675,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 5607.16171978268,
+            "loss": 0.0,
+            "start": 5585.102479605795,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999945675,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 5638.692989734774,
+            "loss": 0.0,
+            "start": 5607.16171978268,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999945675,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 5792.920383435703,
+            "loss": 0.0,
+            "start": 5638.692989734774,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999945476,
+              "TANK": 619.99999999982
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "DEHY/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 5794.920383435703,
+            "loss": 0.0,
+            "start": 5792.920383435703,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994544,
+              "TANK": 590.3344218729849
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "DEHY/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 5795.250000970445,
+            "loss": 0.0,
+            "start": 5794.920383435703,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994488,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 5800.856032471168,
+            "loss": 0.0,
+            "start": 5795.250000970445,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994488,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 5992.1972023186,
+            "loss": 0.0,
+            "start": 5800.856032471168,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994488,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-B/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 5995.837066650183,
+            "loss": 0.0,
+            "start": 5992.1972023186,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994488,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 90.0,
+              "pump-B": 0.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 6066.711550419291,
+            "loss": 0.0,
+            "start": 5995.837066650183,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994488,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-A/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 6072.942439114159,
+            "loss": 0.0,
+            "start": 6066.711550419291,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994488,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-A/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 6074.087371598888,
+            "loss": 0.0,
+            "start": 6072.942439114159,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994488,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-A/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 6077.043793506074,
+            "loss": 0.0,
+            "start": 6074.087371598888,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994488,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 6114.528721690739,
+            "loss": 0.0,
+            "start": 6077.043793506074,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994488,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 6116.858339225481,
+            "loss": 0.0,
+            "start": 6114.528721690739,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999942713,
+              "TANK": 336.56349019995076
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 6138.514250898381,
+            "loss": 0.0,
+            "start": 6116.858339225481,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999941474,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 6150.905601427794,
+            "loss": 0.0,
+            "start": 6138.514250898381,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999941474,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 6251.745766741018,
+            "loss": 0.0,
+            "start": 6150.905601427794,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999940565,
+              "TANK": 605.0797844024951
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/trip"
+            ],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 6260.854188030621,
+            "loss": 0.0,
+            "start": 6251.745766741018,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 6266.065958501143,
+            "loss": 0.0,
+            "start": 6260.854188030621,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 6330.81573761825,
+            "loss": 0.0,
+            "start": 6266.065958501143,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 90.0,
+            "edge_flow": {
+              "inlet": 91.83673469387755,
+              "pump-A": 0.0,
+              "pump-B": 90.0,
+              "rundown": 90.0,
+              "train-1": 69.99999999993,
+              "train-2": 21.83673469394755
+            },
+            "end": 6552.0,
+            "loss": 0.0,
+            "start": 6330.81573761825,
+            "target": 90.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 6678.492095380242,
+            "loss": 0.0,
+            "start": 6552.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 6737.340683325509,
+            "loss": 0.0,
+            "start": 6678.492095380242,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 6863.495410142765,
+            "loss": 0.0,
+            "start": 6737.340683325509,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 7304.593628432706,
+            "loss": 0.0,
+            "start": 6863.495410142765,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 7305.738560917435,
+            "loss": 0.0,
+            "start": 7304.593628432706,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 7346.179911009286,
+            "loss": 0.0,
+            "start": 7305.738560917435,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999994004,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 7348.509528544028,
+            "loss": 0.0,
+            "start": 7346.179911009286,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999937495,
+              "TANK": 6.59383658785373e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 7373.987235550372,
+            "loss": 0.0,
+            "start": 7348.509528544028,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999932646,
+              "TANK": 6.59383658785373e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 68.6,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 0.0,
+              "pump-B": 68.6,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 7422.485225909868,
+            "loss": 1522.836897288169,
+            "start": 7373.987235550372,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999992805,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 7468.462237404118,
+            "loss": 0.0,
+            "start": 7422.485225909868,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999992805,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 7540.666700576057,
+            "loss": 0.0,
+            "start": 7468.462237404118,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999992805,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 7541.987235550372,
+            "loss": 0.0,
+            "start": 7540.666700576057,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999992805,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 7656.442432330805,
+            "loss": 0.0,
+            "start": 7541.987235550372,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.999999999255,
+              "TANK": 6.59383658785373e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 7681.920139337149,
+            "loss": 0.0,
+            "start": 7656.442432330805,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999920686,
+              "TANK": 6.59383658785373e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 68.6,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 0.0,
+              "pump-B": 68.6,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 7730.088851332364,
+            "loss": 1512.4975566497747,
+            "start": 7681.920139337149,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999992009,
+              "TANK": 6.59383658785373e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/trip",
+              "COMP-2/trip"
+            ],
+            "delivery": 0.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 0.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 7736.069256243084,
+            "loss": 598.0404910719699,
+            "start": 7730.088851332364,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999919794,
+              "TANK": 6.59383658785373e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/trip"
+            ],
+            "delivery": 68.6,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 68.6,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 7739.033240695556,
+            "loss": 93.06911180761382,
+            "start": 7736.069256243084,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999915195,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 7785.010252189806,
+            "loss": 0.0,
+            "start": 7739.033240695556,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999915195,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 7849.920139337149,
+            "loss": 0.0,
+            "start": 7785.010252189806,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999915195,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 7898.088851332364,
+            "loss": 0.0,
+            "start": 7849.920139337149,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999915195,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 7904.069256243084,
+            "loss": 0.0,
+            "start": 7898.088851332364,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999915195,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 7983.922714099086,
+            "loss": 0.0,
+            "start": 7904.069256243084,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999991517,
+              "TANK": 792.5851577473331
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 7984.158855572101,
+            "loss": 0.0,
+            "start": 7983.922714099086,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999915144,
+              "TANK": 799.9999999999952
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 7984.429470252855,
+            "loss": 0.0,
+            "start": 7984.158855572101,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999915144,
+              "TANK": 799.9999999999952
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 8059.133475337768,
+            "loss": 0.0,
+            "start": 7984.429470252855,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.999999999126,
+              "TANK": 2.1600499167107046e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 8084.611182344137,
+            "loss": 0.0,
+            "start": 8059.133475337768,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999908704,
+              "TANK": 2.1600499167107046e-12
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-1/trip"
+            ],
+            "delivery": 68.6,
+            "edge_flow": {
+              "inlet": 69.999999999999,
+              "pump-A": 0.0,
+              "pump-B": 68.6,
+              "rundown": 68.6,
+              "train-1": 0.0,
+              "train-2": 70.0
+            },
+            "end": 8123.5396440247305,
+            "loss": 1222.3536967706361,
+            "start": 8084.611182344137,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999904105,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 8169.516655518981,
+            "loss": 0.0,
+            "start": 8123.5396440247305,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999904105,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 8222.37763788132,
+            "loss": 0.0,
+            "start": 8169.516655518981,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999904105,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 0.0,
+              "pump-B": 110.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 8227.760002300969,
+            "loss": 0.0,
+            "start": 8222.37763788132,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999904105,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-B/trip"
+            ],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 8230.03712302414,
+            "loss": 0.0,
+            "start": 8227.760002300969,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999904105,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 8245.775013701794,
+            "loss": 0.0,
+            "start": 8230.03712302414,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999904105,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 8274.737581663896,
+            "loss": 0.0,
+            "start": 8245.775013701794,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999904105,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "GRID/trip"
+            ],
+            "delivery": 0.0,
+            "edge_flow": {
+              "inlet": 0.0,
+              "pump-A": 0.0,
+              "pump-B": 0.0,
+              "rundown": 0.0,
+              "train-1": 0.0,
+              "train-2": 0.0
+            },
+            "end": 8298.943791375681,
+            "loss": 2420.620971178505,
+            "start": 8274.737581663896,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999904105,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 8332.938791673243,
+            "loss": 0.0,
+            "start": 8298.943791375681,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999904105,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 8357.145001385028,
+            "loss": 0.0,
+            "start": 8332.938791673243,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999990217,
+              "TANK": 2.5124791136477143e-11
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 8376.46867288258,
+            "loss": 0.0,
+            "start": 8357.145001385028,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999990056,
+              "TANK": 2.5124791136477143e-11
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 68.6,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 68.6,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 8392.640487051618,
+            "loss": 507.7949649077947,
+            "start": 8376.46867288258,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999989596,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 8438.617498545867,
+            "loss": 0.0,
+            "start": 8392.640487051618,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999989596,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 8440.88801624482,
+            "loss": 0.0,
+            "start": 8438.617498545867,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999989577,
+              "TANK": 723.4279916501438
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 8442.737581663896,
+            "loss": 0.0,
+            "start": 8440.88801624482,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.99999999894027,
+              "TANK": 2.5124791136477143e-11
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 8460.211687742372,
+            "loss": 0.0,
+            "start": 8442.737581663896,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999989326,
+              "TANK": 2.5124791136477143e-11
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "COMP-2/trip"
+            ],
+            "delivery": 68.6,
+            "edge_flow": {
+              "inlet": 69.999999999929,
+              "pump-A": 68.6,
+              "pump-B": 0.0,
+              "rundown": 68.5999999999314,
+              "train-1": 69.99999999993,
+              "train-2": 0.0
+            },
+            "end": 8467.867323378987,
+            "loss": 240.3869589896964,
+            "start": 8460.211687742372,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999988866,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 130.0,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 127.40000000000097,
+              "train-1": 69.99999999993,
+              "train-2": 60.000000000071005
+            },
+            "end": 8513.844334873236,
+            "loss": 0.0,
+            "start": 8467.867323378987,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999988866,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 110.0,
+            "edge_flow": {
+              "inlet": 112.24489795918367,
+              "pump-A": 110.0,
+              "pump-B": 0.0,
+              "rundown": 110.0,
+              "train-1": 69.99999999993,
+              "train-2": 42.24489795925368
+            },
+            "end": 8525.211409690259,
+            "loss": 0.0,
+            "start": 8513.844334873236,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999988866,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 8546.791097528487,
+            "loss": 0.0,
+            "start": 8525.211409690259,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999988866,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 100.0,
+              "pump-B": 0.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 8568.576686269094,
+            "loss": 0.0,
+            "start": 8546.791097528487,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999988866,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [
+              "PUMP-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 8571.32160454867,
+            "loss": 0.0,
+            "start": 8568.576686269094,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_levels_end": {
+              "SLUG": 299.9999999988866,
+              "TANK": 800.0
+            },
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "inlet": 102.0408163265306,
+              "pump-A": 0.0,
+              "pump-B": 100.0,
+              "rundown": 100.0,
+              "train-1": 69.99999999993,
+              "train-2": 32.04081632660061
+            },
+            "end": 8760.0,
+            "loss": 0.0,
+            "start": 8571.32160454867,
+            "target": 100.0
+          }
+        ],
+        "loss_groups": {
+          "@ccf/comp-ccf": 9712.402870616252,
+          "COMP-1/planned": 227.20000000000417,
+          "COMP-1/trip": 1315.42280857825,
+          "COMP-1/trip + COMP-2/trip": 598.0404910719699,
+          "COMP-2/planned": 227.20000000080213,
+          "COMP-2/trip": 4349.639770439115,
+          "DEHY/trip": 2839.721508267412,
+          "GRID/trip": 2523.6648948041147,
+          "PUMP-A/trip + PUMP-B/start": 119.04433376562338
+        },
+        "lost": 11720.192217305612,
+        "lost_value": 454887.6166403643,
+        "mode_downtime": {
+          "CCF:comp-ccf": 116.80447634017173,
+          "COMP-1/trip": 148.0299960639136,
+          "COMP-2/trip": 279.9148557892895,
+          "DEHY/trip": 42.77096762659312,
+          "GRID/trip": 25.351142196514047,
+          "PUMP-A/start": 0,
+          "PUMP-A/trip": 48.175004166683266,
+          "PUMP-B/start": 1.1904433376562338,
+          "PUMP-B/trip": 13.463706592081735
+        },
+        "periods": {
+          "2027-01": {
+            "delivered": 74400.0,
+            "demand": 74400.0,
+            "hours": 744.0,
+            "recovered": 0.0,
+            "shortfall": 0.0
+          },
+          "2027-02": {
+            "delivered": 67200.0,
+            "demand": 67200.0,
+            "hours": 672.0,
+            "recovered": 119.04433376562338,
+            "shortfall": 119.04433376562338
+          },
+          "2027-03": {
+            "delivered": 74400.0,
+            "demand": 74400.0,
+            "hours": 744.0,
+            "recovered": 0.0,
+            "shortfall": 0.0
+          },
+          "2027-04": {
+            "delivered": 56580.518917915455,
+            "demand": 64800.0,
+            "hours": 720.0,
+            "lost": 8219.481082084549,
+            "recovered": 1492.921788531703,
+            "shortfall": 9712.402870616252
+          },
+          "2027-05": {
+            "delivered": 66863.56415779781,
+            "demand": 66960.0,
+            "hours": 744.0,
+            "recovered": 454.40000000080545,
+            "shortfall": 550.8358422030079
+          },
+          "2027-06": {
+            "delivered": 64896.4358422022,
+            "demand": 64800.0,
+            "hours": 720.0,
+            "recovered": 566.1233926036812,
+            "shortfall": 469.68755040147784
+          },
+          "2027-07": {
+            "delivered": 66960.0,
+            "demand": 66960.0,
+            "hours": 744.0,
+            "recovered": 0.0,
+            "shortfall": 0.0
+          },
+          "2027-08": {
+            "delivered": 65484.753879702876,
+            "demand": 66960.0,
+            "hours": 744.0,
+            "lost": 1475.2461202971244,
+            "recovered": 1467.5193115958973,
+            "shortfall": 2942.7654318930217
+          },
+          "2027-09": {
+            "delivered": 64800.0,
+            "demand": 64800.0,
+            "hours": 720.0,
+            "recovered": 0.0,
+            "shortfall": 0.0
+          },
+          "2027-10": {
+            "delivered": 74400.0,
+            "demand": 74400.0,
+            "hours": 744.0,
+            "recovered": 0.0,
+            "shortfall": 0.0
+          },
+          "2027-11": {
+            "delivered": 71118.9361950628,
+            "demand": 72000.0,
+            "hours": 720.0,
+            "lost": 881.0638049372033,
+            "recovered": 2845.380251880324,
+            "shortfall": 3726.4440568175273
+          },
+          "2027-12": {
+            "delivered": 73255.59879001326,
+            "demand": 74400.0,
+            "hours": 744.0,
+            "lost": 1144.401209986736,
+            "recovered": 3246.7553818598844,
+            "shortfall": 4391.156591846632
+          }
+        },
+        "policy": "recoverable within window",
+        "recovered": 10192.14446023792,
+        "shortfall": 21912.33667754334,
+        "years": {
+          "2027": {
+            "delivered": 820359.8077826943,
+            "demand": 832080.0,
+            "hours": 8760.0,
+            "lost": 11720.192217305612,
+            "recovered": 10192.14446023792,
+            "shortfall": 21912.336677543542
+          }
+        }
+      },
+      "relative_tolerance": 0.01,
+      "seed": 42,
+      "stop_reason": "converged: 95% mean half-width within relative tolerance"
+    },
+    "rng": "NumPy PCG64; one stream per (asset, mode) from SeedSequence([seed, replication, 8 little-endian uint32 words of SHA-256(repr((asset, mode)))]); exponential repair draws use key ('repair', asset, mode)"
+  }
+}

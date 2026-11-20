@@ -1,0 +1,2300 @@
+{
+  "status": "DRAFT | EXAMPLE DATA",
+  "limits": "Single product per model, piecewise-constant rates, lexicographic LP routing. Calendar or operating exposure as entered. standby_pair assets use the 0.2 dedicated exponential channel; standby groups use the shared crew and spares. Loss groups record co-occurring outages and can include incidental failures; counterfactual gains are reported separately. Unmet demand is classified lost, recovered or potentially deferred only under the stated recovery policy. Economic values derive solely from entered assumptions. Mean intervals are approximate and do not account for repeated stopping checks. Results depend on study inputs. SIL/PFD and standards conformity are outside scope.",
+  "claims": [],
+  "run": {
+    "analysis": {
+      "analytics": {
+        "2oo3": 0.9720000000000001,
+        "cold_standby": 0.990990990990991,
+        "hidden": [
+          0.0005,
+          0.0004998333749915984
+        ],
+        "single": 0.9090909090909091
+      },
+      "exact_buffer_cover": {
+        "asset_availability": {
+          "P": 0.5
+        },
+        "buffer_end": 0.0,
+        "crew_utilisation": null,
+        "delivered": 1200.0,
+        "efficiency": 1.0,
+        "events": [
+          {
+            "event": "maintenance_start",
+            "hour": 2.0,
+            "item": "P"
+          },
+          {
+            "event": "maintenance_end",
+            "hour": 8.0,
+            "item": "P"
+          }
+        ],
+        "failures": {},
+        "intervals": [
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "in": 100.0,
+              "out": 100.0
+            },
+            "end": 2.0,
+            "loss": 0.0,
+            "start": 0.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "P/planned"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "in": 0.0,
+              "out": 100.0
+            },
+            "end": 8.0,
+            "loss": 0.0,
+            "start": 2.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "in": 100.0,
+              "out": 100.0
+            },
+            "end": 12.0,
+            "loss": 0.0,
+            "start": 8.0,
+            "target": 100.0
+          }
+        ],
+        "loss_groups": {},
+        "mode_downtime": {},
+        "shortfall": 0.0
+      },
+      "larger_storage": {
+        "alternative": {
+          "ci95": [
+            0.9978353750096494,
+            0.9982322738072684
+          ],
+          "halfwidth": 0.0001984493988095359,
+          "kind": "sampling",
+          "mean": 0.9980338244084589,
+          "p10": 0.9938480426482117,
+          "p50": 0.9996874999999998,
+          "p90": 1.0000000000000002
+        },
+        "alternative_hash": "9e9de692059a00498298d23bb7bfbe3bd9375b3307570035b996d7285f92e7f8",
+        "base": {
+          "ci95": [
+            0.9923394409975506,
+            0.9929454748102129
+          ],
+          "halfwidth": 0.00030301690633112,
+          "kind": "sampling",
+          "mean": 0.9926424579038817,
+          "p10": 0.9858676908128123,
+          "p50": 0.9935525985211139,
+          "p90": 0.9985188466505754
+        },
+        "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+        "difference": {
+          "ci95": [
+            0.005226335339906398,
+            0.0055563976692481
+          ],
+          "halfwidth": 0.00016503116467085098,
+          "kind": "paired_delta",
+          "mean": 0.005391366504577249,
+          "p10": 0.0014375000000002025,
+          "p50": 0.005375000000000019,
+          "p90": 0.008773764416697876,
+          "significant": true
+        },
+        "n": 1000,
+        "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference).",
+        "seed": 42
+      },
+      "sensitivity": [
+        {
+          "high": {
+            "alternative": {
+              "ci95": [
+                0.9978353750096494,
+                0.9982322738072684
+              ],
+              "halfwidth": 0.0001984493988095359,
+              "kind": "sampling",
+              "mean": 0.9980338244084589,
+              "p10": 0.9938480426482117,
+              "p50": 0.9996874999999998,
+              "p90": 1.0000000000000002
+            },
+            "alternative_hash": "9e9de692059a00498298d23bb7bfbe3bd9375b3307570035b996d7285f92e7f8",
+            "base": {
+              "ci95": [
+                0.9923394409975506,
+                0.9929454748102129
+              ],
+              "halfwidth": 0.00030301690633112,
+              "kind": "sampling",
+              "mean": 0.9926424579038817,
+              "p10": 0.9858676908128123,
+              "p50": 0.9935525985211139,
+              "p90": 0.9985188466505754
+            },
+            "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+            "difference": {
+              "ci95": [
+                0.005226335339906398,
+                0.0055563976692481
+              ],
+              "halfwidth": 0.00016503116467085098,
+              "kind": "paired_delta",
+              "mean": 0.005391366504577249,
+              "p10": 0.0014375000000002025,
+              "p50": 0.005375000000000019,
+              "p90": 0.008773764416697876,
+              "significant": true
+            },
+            "n": 1000,
+            "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference).",
+            "seed": 42
+          },
+          "input": "storage capacity",
+          "low": {
+            "alternative": {
+              "ci95": [
+                0.9923394409975506,
+                0.9929454748102129
+              ],
+              "halfwidth": 0.00030301690633112,
+              "kind": "sampling",
+              "mean": 0.9926424579038817,
+              "p10": 0.9858676908128123,
+              "p50": 0.9935525985211139,
+              "p90": 0.9985188466505754
+            },
+            "alternative_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+            "base": {
+              "ci95": [
+                0.9923394409975506,
+                0.9929454748102129
+              ],
+              "halfwidth": 0.00030301690633112,
+              "kind": "sampling",
+              "mean": 0.9926424579038817,
+              "p10": 0.9858676908128123,
+              "p50": 0.9935525985211139,
+              "p90": 0.9985188466505754
+            },
+            "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+            "difference": {
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "halfwidth": 0.0,
+              "kind": "paired_delta",
+              "mean": 0.0,
+              "p10": 0.0,
+              "p50": 0.0,
+              "p90": 0.0,
+              "significant": false
+            },
+            "n": 1000,
+            "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference).",
+            "seed": 42
+          }
+        }
+      ],
+      "single_full_capacity_train": {
+        "alternative": {
+          "ci95": [
+            0.9866594501234056,
+            0.9878207467423021
+          ],
+          "halfwidth": 0.0005806483094482487,
+          "kind": "sampling",
+          "mean": 0.9872400984328539,
+          "p10": 0.9745250256988868,
+          "p50": 0.9875,
+          "p90": 1.0
+        },
+        "alternative_hash": "a80cda8fbc73dc77b04b90111b3b1a07cb710e70a25a5835eae1489a7b8a1f71",
+        "base": {
+          "ci95": [
+            0.9923394409975506,
+            0.9929454748102129
+          ],
+          "halfwidth": 0.00030301690633112,
+          "kind": "sampling",
+          "mean": 0.9926424579038817,
+          "p10": 0.9858676908128123,
+          "p50": 0.9935525985211139,
+          "p90": 0.9985188466505754
+        },
+        "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+        "difference": {
+          "ci95": [
+            -0.0058269444586521255,
+            -0.004977774483403389
+          ],
+          "halfwidth": 0.0004245849876243684,
+          "kind": "paired_delta",
+          "mean": -0.005402359471027757,
+          "p10": -0.014437499999999881,
+          "p50": -0.004812499999999997,
+          "p90": 0.002874999999999961,
+          "significant": true
+        },
+        "n": 1000,
+        "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference).",
+        "seed": 42
+      },
+      "three_half_capacity_trains": {
+        "alternative": {
+          "ci95": [
+            0.9992800756605053,
+            0.9995324444108084
+          ],
+          "halfwidth": 0.0001261843751515299,
+          "kind": "sampling",
+          "mean": 0.9994062600356568,
+          "p10": 0.9985712635503312,
+          "p50": 1.0,
+          "p90": 1.0000000000000002
+        },
+        "alternative_hash": "80fb13a32ac25b40595a56e2a671bd8bcfc43a47c1fc82e8e274b5cebcdb424c",
+        "base": {
+          "ci95": [
+            0.9923394409975506,
+            0.9929454748102129
+          ],
+          "halfwidth": 0.00030301690633112,
+          "kind": "sampling",
+          "mean": 0.9926424579038817,
+          "p10": 0.9858676908128123,
+          "p50": 0.9935525985211139,
+          "p90": 0.9985188466505754
+        },
+        "base_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+        "difference": {
+          "ci95": [
+            0.006500457328899654,
+            0.007027146934650878
+          ],
+          "halfwidth": 0.00026334480287561196,
+          "kind": "paired_delta",
+          "mean": 0.006763802131775266,
+          "p10": 0.0014375000000002025,
+          "p50": 0.005948987296533148,
+          "p90": 0.012755532705277031,
+          "significant": true
+        },
+        "n": 1000,
+        "note": "P10-P90 are per-run spreads; ci95 is the sampling interval on the mean (paired for difference).",
+        "seed": 42
+      }
+    },
+    "basis": {
+      "contractual_demand": 240000.0,
+      "horizon_h": 2400.0,
+      "initial": 1000,
+      "maximum": 1000,
+      "no_failure_delivery": 240000.0,
+      "statistic": "Lower-tail percentiles and approximate Student-t mean intervals",
+      "target_rate": 100.0,
+      "volume_unit": "m3"
+    },
+    "code_hash": "bc2ce9e50d892b4362ec4d3dcde6a0ec76d7040f7ee86457e4c2bc519a2f1e27",
+    "code_version": "0.3.0.dev1",
+    "created": "2026-11-20T03:09:21.120797+00:00",
+    "environment": {
+      "numpy": "2.5.5",
+      "platform": "Linux-6.12.113+-x86_64-with-glibc2.41",
+      "python": "3.12.16",
+      "scipy": "1.18.1"
+    },
+    "id": "fa656e9ed3a54011905af7f3a970607c",
+    "library_hash": "59b03ea149f9cb82bfca87cecad8301fe15b1d3fc41ceb8456173db2353f6a89",
+    "method": "rammodel-des-0.3",
+    "method_profile": "0.2-compatible (identical event order, streams and LP)",
+    "model": {
+      "assets": [
+        {
+          "explicit_no_failures": true,
+          "id": "MANIFOLD",
+          "modes": [],
+          "requires": []
+        },
+        {
+          "id": "PWR-A",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "id": "trip",
+              "logistics": 2.0,
+              "loss": 1.0,
+              "mobilisation": 3.0,
+              "mtbf": 2100,
+              "repair": 12
+            }
+          ],
+          "requires": []
+        },
+        {
+          "id": "PWR-B",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "id": "trip",
+              "logistics": 2.0,
+              "loss": 1.0,
+              "mobilisation": 3.0,
+              "mtbf": 2100,
+              "repair": 12
+            }
+          ],
+          "requires": []
+        },
+        {
+          "id": "SEP-A",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "id": "trip",
+              "logistics": 2.0,
+              "loss": 1.0,
+              "mobilisation": 3.0,
+              "mtbf": 1250,
+              "repair": 16
+            }
+          ],
+          "requires": [
+            "POWER-2OO3"
+          ]
+        },
+        {
+          "id": "SEP-B",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "id": "trip",
+              "logistics": 2.0,
+              "loss": 1.0,
+              "mobilisation": 3.0,
+              "mtbf": 1250,
+              "repair": 16
+            }
+          ],
+          "requires": [
+            "POWER-2OO3"
+          ]
+        },
+        {
+          "id": "COMP",
+          "modes": [],
+          "requires": [],
+          "standby_pair": {
+            "active_mtbf": 1600,
+            "idle_mtbf": null,
+            "repair_mean": 19,
+            "switch_failure": 0.02
+          }
+        },
+        {
+          "id": "EXP-A",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "id": "trip",
+              "logistics": 2.0,
+              "loss": 1.0,
+              "mobilisation": 3.0,
+              "mtbf": 1900,
+              "repair": 14,
+              "spare": "export"
+            }
+          ],
+          "requires": [
+            "POWER-2OO3"
+          ]
+        },
+        {
+          "id": "EXP-B",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "id": "trip",
+              "logistics": 2.0,
+              "loss": 1.0,
+              "mobilisation": 3.0,
+              "mtbf": 1900,
+              "repair": 14
+            }
+          ],
+          "requires": [
+            "POWER-2OO3"
+          ]
+        },
+        {
+          "id": "PWR-C",
+          "modes": [
+            {
+              "distribution": "exponential",
+              "id": "trip",
+              "logistics": 2,
+              "loss": 1,
+              "mobilisation": 3,
+              "mtbf": 2100,
+              "repair": 12
+            }
+          ]
+        },
+        {
+          "explicit_no_failures": true,
+          "id": "POWER-2OO3",
+          "modes": [],
+          "requires": [
+            "PWR-A",
+            "PWR-B",
+            "PWR-C"
+          ],
+          "requires_k": 2
+        }
+      ],
+      "basis": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+      "buffer": {
+        "capacity": 600,
+        "draw": 100,
+        "fill": 10,
+        "initial": 600,
+        "node": "tank"
+      },
+      "closed_access": [
+        [
+          820,
+          844
+        ],
+        [
+          1080,
+          1100
+        ]
+      ],
+      "crews": 1,
+      "edges": [
+        {
+          "assets": [
+            "MANIFOLD"
+          ],
+          "capacity": 110,
+          "from": "wells",
+          "id": "feed",
+          "to": "manifold"
+        },
+        {
+          "assets": [
+            "SEP-A",
+            "COMP"
+          ],
+          "capacity": 55,
+          "from": "manifold",
+          "id": "train-A",
+          "to": "tank"
+        },
+        {
+          "assets": [
+            "SEP-B",
+            "COMP"
+          ],
+          "capacity": 55,
+          "from": "manifold",
+          "id": "train-B",
+          "to": "tank"
+        },
+        {
+          "assets": [
+            "EXP-A"
+          ],
+          "capacity": 100,
+          "from": "tank",
+          "id": "export-A",
+          "to": "sales"
+        },
+        {
+          "assets": [
+            "EXP-B"
+          ],
+          "capacity": 100,
+          "from": "tank",
+          "id": "export-B",
+          "to": "sales"
+        }
+      ],
+      "example": true,
+      "feed": 110,
+      "hours": 2400,
+      "maintenance": [
+        {
+          "asset": "COMP",
+          "end": 486,
+          "start": 480
+        }
+      ],
+      "name": "Synthetic offshore production module",
+      "provenance": {
+        "assets/COMP": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "assets/EXP-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "assets/EXP-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "assets/MANIFOLD": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "assets/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "assets/PWR-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "assets/PWR-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "assets/PWR-C": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "assets/SEP-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "assets/SEP-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "dependencies/EXP-A/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "dependencies/EXP-B/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "dependencies/POWER-2OO3/PWR-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "dependencies/POWER-2OO3/PWR-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "dependencies/POWER-2OO3/PWR-C": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "dependencies/SEP-A/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "dependencies/SEP-B/POWER-2OO3": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "edges/export-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "edges/export-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "edges/feed": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "edges/train-A": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "edges/train-B": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "modes/EXP-A/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "modes/EXP-B/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "modes/PWR-A/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "modes/PWR-B/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "modes/PWR-C/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "modes/SEP-A/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "modes/SEP-B/trip": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "standby/COMP": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "study/buffer": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "study/closed_access": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "study/crews": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "study/feed": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "study/hours": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "study/maintenance": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "study/spares": "EXAMPLE – synthetic offshore basis, 20 November 2026",
+        "study/target": "EXAMPLE – synthetic offshore basis, 20 November 2026"
+      },
+      "sink": "sales",
+      "source": "wells",
+      "spares": {
+        "export": {
+          "initial": 1,
+          "lead": 96
+        }
+      },
+      "target": 100,
+      "volume_unit": "m3"
+    },
+    "model_hash": "fcbffc19adfac2f30369b29d9e9c70d3ec0c1fe8dacaceaf4f2c183c070be756",
+    "result": {
+      "contributors": {
+        "asset_availability": {
+          "COMP": 0.9972197949256631,
+          "EXP-A": 0.9884544014930573,
+          "EXP-B": 0.9894561566341618,
+          "MANIFOLD": 1.0,
+          "POWER-2OO3": 0.9997882337786395,
+          "PWR-A": 0.9913752190614137,
+          "PWR-B": 0.9917667773564922,
+          "PWR-C": 0.9916854606337974,
+          "SEP-A": 0.9829837628475833,
+          "SEP-B": 0.9826285818272762
+        },
+        "failures": {
+          "COMP/standby_pair": 0.042,
+          "EXP-A/trip": 1.28,
+          "EXP-B/trip": 1.273,
+          "PWR-A/trip": 1.174,
+          "PWR-B/trip": 1.125,
+          "PWR-C/trip": 1.143,
+          "SEP-A/trip": 1.87,
+          "SEP-B/trip": 1.912
+        },
+        "loss_groups": {
+          "COMP/planned": 31.86247393457338,
+          "COMP/standby_pair": 46.50543372982252,
+          "EXP-A/trip + COMP/standby_pair": 1.3590848544170058,
+          "EXP-A/trip + EXP-B/trip": 20.161632431169537,
+          "EXP-A/trip + EXP-B/trip + PWR-B/trip": 0.7677832918006515,
+          "EXP-A/trip + EXP-B/trip + PWR-C/trip": 0.14329268315837,
+          "EXP-A/trip + EXP-B/trip + SEP-A/trip": 4.134509343575383,
+          "EXP-A/trip + PWR-A/trip + SEP-A/trip": 0.34499999999999953,
+          "EXP-A/trip + PWR-B/trip + PWR-C/trip + SEP-B/trip": 0.12583678162607156,
+          "EXP-A/trip + PWR-B/trip + SEP-A/trip": 0.5962437632965021,
+          "EXP-A/trip + PWR-B/trip + SEP-B/trip": 0.72,
+          "EXP-A/trip + PWR-C/trip + SEP-B/trip": 0.6646198739642659,
+          "EXP-A/trip + SEP-A/trip": 9.91785950205994,
+          "EXP-A/trip + SEP-A/trip + COMP/planned": 0.4264485352101531,
+          "EXP-A/trip + SEP-A/trip + SEP-B/trip": 1.3417683222483334,
+          "EXP-A/trip + SEP-B/trip": 13.242202990946152,
+          "EXP-B/trip + COMP/planned": 0.45090521946883655,
+          "EXP-B/trip + COMP/standby_pair": 0.41672504473844185,
+          "EXP-B/trip + PWR-B/trip + SEP-A/trip": 0.0562032829907821,
+          "EXP-B/trip + PWR-B/trip + SEP-B/trip": 0.29858953777178726,
+          "EXP-B/trip + PWR-C/trip + SEP-A/trip": 0.04285150021655113,
+          "EXP-B/trip + SEP-A/trip": 6.138269962175505,
+          "EXP-B/trip + SEP-A/trip + SEP-B/trip": 0.518885000450075,
+          "EXP-B/trip + SEP-B/trip": 8.909252139709215,
+          "PWR-A/trip + COMP/planned": 0.39580027953306285,
+          "PWR-A/trip + PWR-B/trip": 14.473645701207275,
+          "PWR-A/trip + PWR-B/trip + COMP/standby_pair": 0.5598513023959185,
+          "PWR-A/trip + PWR-B/trip + SEP-B/trip": 0.6465301883461961,
+          "PWR-A/trip + PWR-C/trip": 14.361904503419678,
+          "PWR-A/trip + SEP-A/trip": 7.775157088593048,
+          "PWR-A/trip + SEP-A/trip + COMP/planned": 0.34069618945605384,
+          "PWR-A/trip + SEP-A/trip + SEP-B/trip": 1.2929405095766924,
+          "PWR-A/trip + SEP-B/trip": 10.30081829454531,
+          "PWR-B/trip + COMP/planned": 0.21563234050649385,
+          "PWR-B/trip + PWR-C/trip": 20.31307622844143,
+          "PWR-B/trip + PWR-C/trip + SEP-B/trip": 0.3430484210678628,
+          "PWR-B/trip + SEP-A/trip": 6.7942780823238165,
+          "PWR-B/trip + SEP-A/trip + SEP-B/trip": 0.7526299836753424,
+          "PWR-B/trip + SEP-B/trip": 6.225266902985372,
+          "PWR-C/trip + SEP-A/trip": 5.666373359004631,
+          "PWR-C/trip + SEP-B/trip": 6.8704050897056375,
+          "SEP-A/trip": 717.7081695064886,
+          "SEP-A/trip + COMP/planned": 4.159602189622513,
+          "SEP-A/trip + COMP/standby_pair": 0.029218003381788548,
+          "SEP-A/trip + SEP-B/trip": 65.12234227256019,
+          "SEP-B/trip": 726.7792606154338,
+          "SEP-B/trip + COMP/planned": 5.537584290727784
+        },
+        "mode_downtime": {
+          "COMP/standby_pair": 0.6724921783494839,
+          "EXP-A/trip": 27.202455853197527,
+          "EXP-B/trip": 24.796985146732734,
+          "PWR-A/trip": 20.699474252610337,
+          "PWR-B/trip": 19.759734344422277,
+          "PWR-C/trip": 19.95489447888774,
+          "SEP-A/trip": 40.33073023453609,
+          "SEP-B/trip": 41.19431883717809
+        }
+      },
+      "converged": true,
+      "convergence": [
+        {
+          "halfwidth": 0.00030301690633112,
+          "mean": 0.9926424579038817,
+          "n": 1000
+        }
+      ],
+      "diagnostics": {
+        "replications": 1000,
+        "replications_with_failure_events": 1000,
+        "replications_with_shortfall": 981,
+        "shortfall_relative_halfwidth": 0.041184529068611336,
+        "zero_sample_variance": false
+      },
+      "metrics": {
+        "buffer_end": {
+          "ci95": [
+            552.5798123386032,
+            567.8322142354109
+          ],
+          "halfwidth": 7.6262009484038105,
+          "mean": 560.2060132870071,
+          "p10": 467.4858405258938,
+          "p50": 600.0,
+          "p90": 600.0
+        },
+        "crew_utilisation": {
+          "ci95": [
+            0.05584548414539973,
+            0.05820889699083324
+          ],
+          "halfwidth": 0.0011817064227167531,
+          "mean": 0.05702719056811648,
+          "p10": 0.034166666666666665,
+          "p50": 0.055,
+          "p90": 0.08166666666666667
+        },
+        "delivered": {
+          "ci95": [
+            238161.46583941212,
+            238306.91395445104
+          ],
+          "halfwidth": 72.72405751946876,
+          "mean": 238234.18989693158,
+          "p10": 236608.24579507497,
+          "p50": 238452.62364506733,
+          "p90": 239644.52319613812
+        },
+        "efficiency": {
+          "ci95": [
+            0.9923394409975506,
+            0.9929454748102129
+          ],
+          "halfwidth": 0.00030301690633112,
+          "mean": 0.9926424579038817,
+          "p10": 0.9858676908128123,
+          "p50": 0.9935525985211139,
+          "p90": 0.9985188466505754
+        },
+        "shortfall": {
+          "ci95": [
+            1693.0860455489471,
+            1838.5341605878846
+          ],
+          "halfwidth": 72.72405751946876,
+          "mean": 1765.8101030684159,
+          "p10": 355.4768038618874,
+          "p50": 1547.3763549326686,
+          "p90": 3391.754204925045
+        }
+      },
+      "n": 1000,
+      "preview": {
+        "asset_availability": {
+          "COMP": 0.9975,
+          "EXP-A": 0.9841666666666666,
+          "EXP-B": 0.9910372515203223,
+          "MANIFOLD": 1.0,
+          "POWER-2OO3": 1.0,
+          "PWR-A": 0.9858333333333333,
+          "PWR-B": 1.0,
+          "PWR-C": 0.9858333333333333,
+          "SEP-A": 0.9825,
+          "SEP-B": 0.9825
+        },
+        "buffer_end": 599.9999999999989,
+        "crew_utilisation": 0.06416666666666666,
+        "delivered": 237275.5432825103,
+        "efficiency": 0.9886480970104596,
+        "events": [
+          {
+            "event": "standby_transition",
+            "hour": 86.61726421475443,
+            "item": [
+              "COMP",
+              1
+            ]
+          },
+          {
+            "event": "standby_transition",
+            "hour": 101.94416982026256,
+            "item": [
+              "COMP",
+              0
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 252.787956390497,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 252.787956390497,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 257.787956390497,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 257.787956390497,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 273.787956390497,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "maintenance_start",
+            "hour": 480.0,
+            "item": "COMP"
+          },
+          {
+            "event": "fail",
+            "hour": 485.8532684970448,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 485.8532684970448,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "maintenance_end",
+            "hour": 486.0,
+            "item": "COMP"
+          },
+          {
+            "event": "ready",
+            "hour": 490.8532684970448,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 490.8532684970448,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 506.8532684970448,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 614.6387298657016,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 614.6387298657016,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 619.6387298657016,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 619.6387298657016,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 626.1281335144752,
+            "item": [
+              "EXP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 626.1281335144752,
+            "item": [
+              "EXP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 631.1281335144752,
+            "item": [
+              "EXP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 633.6387298657016,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 633.6387298657016,
+            "item": [
+              "EXP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 647.6387298657016,
+            "item": [
+              "EXP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "replenish",
+            "hour": 715.6387298657016,
+            "item": "export"
+          },
+          {
+            "event": "access_open",
+            "hour": 844.0,
+            "item": null
+          },
+          {
+            "event": "fail",
+            "hour": 915.7096840764953,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 915.7096840764953,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 920.7096840764953,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 920.7096840764953,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 936.7096840764953,
+            "item": [
+              "SEP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 1040.8269168564866,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 1040.8269168564866,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 1045.8269168564866,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 1045.8269168564866,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 1057.8269168564866,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "access_open",
+            "hour": 1100.0,
+            "item": null
+          },
+          {
+            "event": "standby_transition",
+            "hour": 1216.0102642864204,
+            "item": [
+              "COMP",
+              1
+            ]
+          },
+          {
+            "event": "standby_transition",
+            "hour": 1220.5609888672886,
+            "item": [
+              "COMP",
+              0
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 1538.639620418438,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 1538.639620418438,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 1543.639620418438,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 1543.639620418438,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 1555.639620418438,
+            "item": [
+              "PWR-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "standby_transition",
+            "hour": 1663.4649546569265,
+            "item": [
+              "COMP",
+              1
+            ]
+          },
+          {
+            "event": "standby_transition",
+            "hour": 1666.4722222705566,
+            "item": [
+              "COMP",
+              0
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 1899.9250699846423,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 1899.9250699846423,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 1904.9250699846423,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 1904.9250699846423,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 1918.9250699846423,
+            "item": [
+              "EXP-A",
+              "trip"
+            ]
+          },
+          {
+            "event": "replenish",
+            "hour": 2000.9250699846423,
+            "item": "export"
+          },
+          {
+            "event": "fail",
+            "hour": 2024.4652249926717,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 2024.4652249926717,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 2029.4652249926717,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 2029.4652249926717,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 2045.4652249926717,
+            "item": [
+              "SEP-B",
+              "trip"
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 2228.8900729356365,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 2228.8900729356365,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 2233.8900729356365,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 2233.8900729356365,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 2245.8900729356365,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          },
+          {
+            "event": "fail",
+            "hour": 2250.7206994779954,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          },
+          {
+            "event": "detected",
+            "hour": 2250.7206994779954,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          },
+          {
+            "event": "ready",
+            "hour": 2255.7206994779954,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          },
+          {
+            "event": "repair_start",
+            "hour": 2255.7206994779954,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          },
+          {
+            "event": "restore",
+            "hour": 2267.7206994779954,
+            "item": [
+              "PWR-C",
+              "trip"
+            ]
+          }
+        ],
+        "failures": {
+          "COMP/standby_pair": 0,
+          "EXP-A/trip": 2,
+          "EXP-B/trip": 1,
+          "PWR-A/trip": 2,
+          "PWR-B/trip": 0,
+          "PWR-C/trip": 2,
+          "SEP-A/trip": 2,
+          "SEP-B/trip": 2
+        },
+        "intervals": [
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 86.61726421475443,
+            "loss": 0.0,
+            "start": 0.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 101.94416982026256,
+            "loss": 0.0,
+            "start": 86.61726421475443,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 252.787956390497,
+            "loss": 0.0,
+            "start": 101.94416982026256,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 374.99999999999875,
+            "buffer_start": 600.0,
+            "causes": [
+              "SEP-B/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 55.0,
+              "train-B": 0.0
+            },
+            "end": 257.787956390497,
+            "loss": 0.0,
+            "start": 252.787956390497,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_start": 374.99999999999875,
+            "causes": [
+              "SEP-B/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 55.0,
+              "train-B": 0.0
+            },
+            "end": 266.12128972383033,
+            "loss": 0.0,
+            "start": 257.787956390497,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_start": 0.0,
+            "causes": [
+              "SEP-B/trip"
+            ],
+            "delivery": 55.0,
+            "edge_flow": {
+              "export-A": 55.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 55.0,
+              "train-B": 0.0
+            },
+            "end": 273.787956390497,
+            "loss": 345.00000000000085,
+            "start": 266.12128972383033,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 110.0,
+              "train-A": 55.0,
+              "train-B": 55.0
+            },
+            "end": 333.787956390497,
+            "loss": 0.0,
+            "start": 273.787956390497,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 480.0,
+            "loss": 0.0,
+            "start": 333.787956390497,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 14.673150295521964,
+            "buffer_start": 600.0,
+            "causes": [
+              "COMP/planned"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 0.0,
+              "train-A": 0.0,
+              "train-B": 0.0
+            },
+            "end": 485.8532684970448,
+            "loss": 0.0,
+            "start": 480.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_start": 14.673150295521964,
+            "causes": [
+              "SEP-A/trip",
+              "COMP/planned"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 0.0,
+              "train-A": 0.0,
+              "train-B": 0.0
+            },
+            "end": 486.0,
+            "loss": 0.0,
+            "start": 485.8532684970448,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_start": 0.0,
+            "causes": [
+              "SEP-A/trip"
+            ],
+            "delivery": 55.0,
+            "edge_flow": {
+              "export-A": 55.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 0.0,
+              "train-B": 55.0
+            },
+            "end": 490.8532684970448,
+            "loss": 218.39708236701512,
+            "start": 486.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_start": 0.0,
+            "causes": [
+              "SEP-A/trip"
+            ],
+            "delivery": 55.0,
+            "edge_flow": {
+              "export-A": 55.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 0.0,
+              "train-B": 55.0
+            },
+            "end": 506.8532684970448,
+            "loss": 720.0,
+            "start": 490.8532684970448,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 110.0,
+              "train-A": 55.0,
+              "train-B": 55.0
+            },
+            "end": 566.8532684970448,
+            "loss": 0.0,
+            "start": 506.8532684970448,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 614.6387298657016,
+            "loss": 0.0,
+            "start": 566.8532684970448,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "EXP-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 0.0,
+              "export-B": 100.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 619.6387298657016,
+            "loss": 0.0,
+            "start": 614.6387298657016,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "EXP-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 0.0,
+              "export-B": 100.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 626.1281335144752,
+            "loss": 0.0,
+            "start": 619.6387298657016,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "EXP-A/trip",
+              "EXP-B/trip"
+            ],
+            "delivery": 0.0,
+            "edge_flow": {
+              "export-A": 0.0,
+              "export-B": 0.0,
+              "feed": 0.0,
+              "train-A": 0.0,
+              "train-B": 0.0
+            },
+            "end": 631.1281335144752,
+            "loss": 500.0,
+            "start": 626.1281335144752,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "EXP-A/trip",
+              "EXP-B/trip"
+            ],
+            "delivery": 0.0,
+            "edge_flow": {
+              "export-A": 0.0,
+              "export-B": 0.0,
+              "feed": 0.0,
+              "train-A": 0.0,
+              "train-B": 0.0
+            },
+            "end": 633.6387298657016,
+            "loss": 251.0596351226468,
+            "start": 631.1281335144752,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "EXP-B/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 647.6387298657016,
+            "loss": 0.0,
+            "start": 633.6387298657016,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 715.6387298657016,
+            "loss": 0.0,
+            "start": 647.6387298657016,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 844.0,
+            "loss": 0.0,
+            "start": 715.6387298657016,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 915.7096840764953,
+            "loss": 0.0,
+            "start": 844.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 375.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "SEP-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 0.0,
+              "train-B": 55.0
+            },
+            "end": 920.7096840764953,
+            "loss": 0.0,
+            "start": 915.7096840764953,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_start": 375.0,
+            "causes": [
+              "SEP-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 0.0,
+              "train-B": 55.0
+            },
+            "end": 929.0430174098286,
+            "loss": 0.0,
+            "start": 920.7096840764953,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 0.0,
+            "buffer_start": 0.0,
+            "causes": [
+              "SEP-A/trip"
+            ],
+            "delivery": 55.0,
+            "edge_flow": {
+              "export-A": 55.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 0.0,
+              "train-B": 55.0
+            },
+            "end": 936.7096840764953,
+            "loss": 344.9999999999983,
+            "start": 929.0430174098286,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 0.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 110.0,
+              "train-A": 55.0,
+              "train-B": 55.0
+            },
+            "end": 996.7096840764953,
+            "loss": 0.0,
+            "start": 936.7096840764953,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1040.8269168564866,
+            "loss": 0.0,
+            "start": 996.7096840764953,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "PWR-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1045.8269168564866,
+            "loss": 0.0,
+            "start": 1040.8269168564866,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "PWR-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1057.8269168564866,
+            "loss": 0.0,
+            "start": 1045.8269168564866,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1100.0,
+            "loss": 0.0,
+            "start": 1057.8269168564866,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1216.0102642864204,
+            "loss": 0.0,
+            "start": 1100.0,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1220.5609888672886,
+            "loss": 0.0,
+            "start": 1216.0102642864204,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1538.639620418438,
+            "loss": 0.0,
+            "start": 1220.5609888672886,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "PWR-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1543.639620418438,
+            "loss": 0.0,
+            "start": 1538.639620418438,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "PWR-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1555.639620418438,
+            "loss": 0.0,
+            "start": 1543.639620418438,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1663.4649546569265,
+            "loss": 0.0,
+            "start": 1555.639620418438,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1666.4722222705566,
+            "loss": 0.0,
+            "start": 1663.4649546569265,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1899.9250699846423,
+            "loss": 0.0,
+            "start": 1666.4722222705566,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "EXP-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 0.0,
+              "export-B": 100.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1904.9250699846423,
+            "loss": 0.0,
+            "start": 1899.9250699846423,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "EXP-A/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 0.0,
+              "export-B": 100.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 1918.9250699846423,
+            "loss": 0.0,
+            "start": 1904.9250699846423,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 2000.9250699846423,
+            "loss": 0.0,
+            "start": 1918.9250699846423,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 600.0,
+            "buffer_start": 600.0,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 2024.4652249926717,
+            "loss": 0.0,
+            "start": 2000.9250699846423,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 375.0,
+            "buffer_start": 600.0,
+            "causes": [
+              "SEP-B/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 55.0,
+              "train-B": 0.0
+            },
+            "end": 2029.4652249926717,
+            "loss": 0.0,
+            "start": 2024.4652249926717,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 3.410605131648481e-12,
+            "buffer_start": 375.0,
+            "causes": [
+              "SEP-B/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 55.0,
+              "train-B": 0.0
+            },
+            "end": 2037.798558326005,
+            "loss": 0.0,
+            "start": 2029.4652249926717,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 3.410605131648481e-12,
+            "buffer_start": 3.410605131648481e-12,
+            "causes": [
+              "SEP-B/trip"
+            ],
+            "delivery": 55.0,
+            "edge_flow": {
+              "export-A": 55.0,
+              "export-B": 0.0,
+              "feed": 55.0,
+              "train-A": 55.0,
+              "train-B": 0.0
+            },
+            "end": 2045.4652249926717,
+            "loss": 345.0000000000034,
+            "start": 2037.798558326005,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 599.9999999999989,
+            "buffer_start": 3.410605131648481e-12,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 110.0,
+              "train-A": 55.0,
+              "train-B": 55.0
+            },
+            "end": 2105.465224992671,
+            "loss": 0.0,
+            "start": 2045.4652249926717,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 599.9999999999989,
+            "buffer_start": 599.9999999999989,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 2228.8900729356365,
+            "loss": 0.0,
+            "start": 2105.465224992671,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 599.9999999999989,
+            "buffer_start": 599.9999999999989,
+            "causes": [
+              "PWR-C/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 2233.8900729356365,
+            "loss": 0.0,
+            "start": 2228.8900729356365,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 599.9999999999989,
+            "buffer_start": 599.9999999999989,
+            "causes": [
+              "PWR-C/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 2245.8900729356365,
+            "loss": 0.0,
+            "start": 2233.8900729356365,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 599.9999999999989,
+            "buffer_start": 599.9999999999989,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 2250.7206994779954,
+            "loss": 0.0,
+            "start": 2245.8900729356365,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 599.9999999999989,
+            "buffer_start": 599.9999999999989,
+            "causes": [
+              "PWR-C/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 2255.7206994779954,
+            "loss": 0.0,
+            "start": 2250.7206994779954,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 599.9999999999989,
+            "buffer_start": 599.9999999999989,
+            "causes": [
+              "PWR-C/trip"
+            ],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 2267.7206994779954,
+            "loss": 0.0,
+            "start": 2255.7206994779954,
+            "target": 100.0
+          },
+          {
+            "buffer_end": 599.9999999999989,
+            "buffer_start": 599.9999999999989,
+            "causes": [],
+            "delivery": 100.0,
+            "edge_flow": {
+              "export-A": 100.0,
+              "export-B": 0.0,
+              "feed": 100.0,
+              "train-A": 45.0,
+              "train-B": 55.0
+            },
+            "end": 2400.0,
+            "loss": 0.0,
+            "start": 2267.7206994779954,
+            "target": 100.0
+          }
+        ],
+        "loss_groups": {
+          "EXP-A/trip + EXP-B/trip": 751.0596351226468,
+          "SEP-A/trip": 1283.3970823670134,
+          "SEP-B/trip": 690.0000000000043
+        },
+        "mode_downtime": {
+          "COMP/standby_pair": 0,
+          "EXP-A/trip": 38.0,
+          "EXP-B/trip": 21.510596351226468,
+          "PWR-A/trip": 34.0,
+          "PWR-B/trip": 0,
+          "PWR-C/trip": 34.0,
+          "SEP-A/trip": 42.0,
+          "SEP-B/trip": 42.00000000000003
+        },
+        "shortfall": 2724.4567174896947
+      },
+      "relative_tolerance": 0.01,
+      "seed": 42,
+      "stop_reason": "converged: 95% mean half-width within relative tolerance"
+    },
+    "rng": "NumPy PCG64; one stream per (asset, mode) from SeedSequence([seed, replication, 8 little-endian uint32 words of SHA-256(repr((asset, mode)))]); exponential repair draws use key ('repair', asset, mode)"
+  }
+}
